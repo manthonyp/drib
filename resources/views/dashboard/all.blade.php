@@ -6,7 +6,8 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="page-title mb-0">All Files</h1>
-        <div class="d-flex">
+        <div class="d-flex align-items-center">
+            <h6 class="result-count rounded text-secondary border">Page {{ Request::query('page') === null ? 1 : Request::query('page') }}</h6>
             <button class="grid-view round-button dark text-dark d-flex justify-content-center mr-2 {{ Session::get('view') == 'grid' ? 'active' : '' }}" type="button" data-view="grid" data-toggle="tooltip" data-placement="bottom" title="Grid View">
                 <i class="material-icons">view_module</i>
                 <div class="rippleJS"></div>

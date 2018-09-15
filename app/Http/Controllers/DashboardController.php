@@ -33,7 +33,9 @@ class DashboardController extends Controller
                         ->take(6)
                         ->get();
             
-        return view('dashboard.index')->with('recentActivity', $recentActivity)->with('recentlyAdded', $recentlyAdded);
+        return view('dashboard.index')
+                        ->with('recentActivity', $recentActivity)
+                        ->with('recentlyAdded', $recentlyAdded);
     }
 
     public function all()
@@ -83,6 +85,11 @@ class DashboardController extends Controller
                         ->where('trashed', false)
                         ->orderby('id', 'desc')
                         ->get();
+
+        $todayCount = count($postsToday);
+        $yesterdayCount = count($postsYesterday);
+        $weekCount = count($postsWeek);
+        $monthCount = count($postsMonth);
         
         return view('dashboard.recent')
                         ->with('postsToday', $postsToday)
@@ -133,7 +140,10 @@ class DashboardController extends Controller
         
         $count = count($posts);
         
-        return view('dashboard.search')->with('posts', $posts)->with('query', $query)->with('count', $count);
+        return view('dashboard.search')
+                        ->with('posts', $posts)
+                        ->with('query', $query)
+                        ->with('count', $count);
     }
 
     public function view(Request $request)

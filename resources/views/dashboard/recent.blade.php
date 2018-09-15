@@ -21,8 +21,9 @@
     @if (count($postsToday) > 0)
 
         <div class="position-relative">
-            <div class="sub-header sticky-top d-flex border-bottom bg-light py-2 mb-3">
+            <div class="sub-header sticky-top d-flex justify-content-between align-items-center border-bottom bg-light py-2 mb-3">
                 <h4 class="mb-0">Today</h4>
+                <h6 class="result-count rounded text-secondary border mr-0">{{count($postsToday)}} {{count($postsToday) == 1 ? 'item' : 'items'}}</h6>
             </div>
             <div class="row {{ Session::get('view') == 'list' ? 'list' : '' }}">
 
@@ -183,8 +184,9 @@
     @if (count($postsYesterday) > 0)
 
         <div class="position-relative">
-            <div class="sub-header sticky-top d-flex border-bottom bg-light py-2 mb-3">
+            <div class="sub-header sticky-top d-flex justify-content-between align-items-center border-bottom bg-light py-2 mb-3">
                 <h4 class="mb-0">Yesterday</h4>
+                <h6 class="result-count rounded text-secondary border mr-0">{{count($postsYesterday)}} {{count($postsYesterday) == 1 ? 'item' : 'items'}}</h6>
             </div>
             <div class="row {{ Session::get('view') == 'list' ? 'list' : '' }}">
 
@@ -345,8 +347,9 @@
     @if (count($postsWeek) > 0)
 
         <div class="position-relative">
-            <div class="sub-header sticky-top d-flex border-bottom bg-light py-2 mb-3">
+            <div class="sub-header sticky-top d-flex justify-content-between align-items-center border-bottom bg-light py-2 mb-3">
                 <h4 class="mb-0">Earlier this week</h4>
+                <h6 class="result-count rounded text-secondary border mr-0">{{count($postsWeek)}} {{count($postsWeek) == 1 ? 'item' : 'items'}}</h6>
             </div>
             <div class="row {{ Session::get('view') == 'list' ? 'list' : '' }}">
 
@@ -507,8 +510,9 @@
     @if (count($postsMonth) > 0)
 
         <div class="position-relative">
-            <div class="sub-header sticky-top d-flex border-bottom bg-light py-2 mb-3">
+            <div class="sub-header sticky-top d-flex justify-content-between align-items-center border-bottom bg-light py-2 mb-3">
                 <h4 class="mb-0">Earlier this month</h4>
+                <h6 class="result-count rounded text-secondary border mr-0">{{count($postsMonth)}} {{count($postsMonth) == 1 ? 'item' : 'items'}}</h6>
             </div>
             <div class="row {{ Session::get('view') == 'list' ? 'list' : '' }}">
 
