@@ -49,6 +49,6 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/vendor.js') }}"></script>
+    <script src="{{ asset('js/vendor9A8FEF265B72CD8AB1159B445DED3.js') }}"></script>
 </body>
 </html>
