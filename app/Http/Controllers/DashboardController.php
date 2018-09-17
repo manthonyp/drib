@@ -132,8 +132,12 @@ class DashboardController extends Controller
             'search' => 'required|string|min:3'
         ]);
 
+        $id = Auth::id();
+
         // get all models that matched the search query
-        $posts = Post::where([['original_name', 'like', '%'.$query.'%'], ['trashed', false]])
+        $posts = Post::where('original_name', 'like', '%'.$query.'%')
+                        ->where('user_id', $id)
+                        ->where('trashed', false)
                         ->orderby('id', 'desc')
                         ->take(50)
                         ->get();
