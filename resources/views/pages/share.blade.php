@@ -32,7 +32,7 @@
             </div>
 
             {!! Form::open(['action' => ['PostsController@guestDownload', $post->id, $post->share_token], 'method' => 'GET']) !!}
-                {{Form::submit('Download', ['id' => 'download-button', 'class' => 'btn btn-dark btn-lg w-100', 'data-id' => $post->id, 'data-share-token' => $post->share_token])}}
+                {{Form::submit('Download', ['id' => 'download_button', 'class' => 'btn btn-dark btn-lg w-100', 'data-id' => $post->id, 'data-share-token' => $post->share_token])}}
             {!! Form::close() !!}
 
         </div>

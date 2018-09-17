@@ -61,7 +61,9 @@
                         {{ Form::password('new_password_confirmation', ['class' => 'form-control']) }}
                     </div>
 
-                    <button class="btn btn-dark btn-lg w-100 has-ripple" type="submit">Save Changes</button>
+                    <button class="btn btn-dark btn-lg w-100 has-ripple" type="submit">
+                        Save Changes<div class="rippleJS"></div>
+                    </button>
                     
                 {!! Form::close() !!}
 

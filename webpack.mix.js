@@ -24,4 +24,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'resources/assets/js/ripple.js',
         'resources/assets/js/script.js'
     ],  'public/js/vendor9A8FEF265B72CD8AB1159B445DED3.js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+    .sourceMaps() 
+    .sass('resources/assets/sass/app.scss', 'public/css');

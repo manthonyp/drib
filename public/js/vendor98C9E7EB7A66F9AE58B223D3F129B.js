@@ -3586,20 +3586,6 @@ Dropzone.options.dropzone = {
 };
 
 $(function() {
-    // ripple js options
-    // $.ripple('.has-ripple', {
-    //     debug: false,
-    //     on: 'mousedown',
-    //     opacity: 0.8,
-    //     color: 'auto',
-    //     multi: false,
-    //     duration: 0.4,
-    //     rate: function(pxPerSecond) {
-    //         return pxPerSecond;
-    //     },
-    //     easing: 'easeInQuart'
-    // });
-
     // popper js init
     $('[data-toggle="tooltip"]').tooltip({
         trigger : 'hover'
@@ -3703,7 +3689,7 @@ $(function() {
                 var filename = items[i].name;
             }
     
-            $('.file-selected').text(filename);
+            $('.file-selected').text('Selected: '+filename);
         }
     });
 
@@ -4076,7 +4062,7 @@ $(function() {
     });
 
     // increment file download count
-    $('#download-button').click(function() {
+    $('#download_button').click(function() {
         var fileId = $(this).data('id');
         var shareToken = $(this).data('share-token');
         var token =  $('meta[name=csrf-token]').attr('content');
@@ -4088,13 +4074,13 @@ $(function() {
                 '_token': token
             },
             beforeSend: function() {
-                $('#download-button').attr('value', 'Fetching...');
+                $('#download_button').attr('value', 'Fetching...');
             },
             complete: function() {
-                $('#download-button').attr('value', 'Downloading...').prop('disabled', 'true');
+                $('#download_button').attr('value', 'Downloading...').prop('disabled', 'true');
             },
             success: function(data) {
-                $('#download-button').attr('value', 'Downloading...').prop('disabled', 'true');
+                $('#download_button').attr('value', 'Downloading...').prop('disabled', 'true');
             }
         });
     });
