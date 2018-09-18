@@ -9,7 +9,9 @@
     <h4>What is DRIB?</h4>
     <p>DRIB is a simple cloud storage where you can easily upload and share any type of file.</p>
     <h4>What is the maximum upload size per file allowed?</h4>
-    <p>You can upload and download file up to 10 MB.</p>
+    <p>You can upload and download file up to 50 MB.</p>
+    <h4>What is the maximum number of files allowed in a single upload request?</h4>
+    <p>You can upload up to 20 files simultaneously.</p>
     <h4>Do you have a player for audio and video files?</h4>
     <p>DRIB uses HTML5 audio and video player for preview.</p>
     <h4>Can I hotlink directly to an image?</h4>

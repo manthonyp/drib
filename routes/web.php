@@ -23,12 +23,12 @@ Route::get('dashboard/admin', 'DashboardController@admin')->middleware('is_admin
 
 // Files
 Route::resource('posts', 'PostsController');
-Route::get('file/shared/{id}/{share_slug}', 'PostsController@show')->name('share page');
+Route::get('file/shared/{id}/{share_token}', 'PostsController@show')->name('share page');
 Route::get('file/shared/link', 'PostsController@shareLink');
 Route::get('file/info', 'PostsController@getFileInfo');
 Route::get('file/download/{id}/auth', 'PostsController@userDownload');
-Route::get('file/download/{id}/{share_slug}', 'PostsController@guestDownload');
-Route::put('file/store', 'PostsController@store')->name('store');
+Route::get('file/download/{id}/{share_token}', 'PostsController@guestDownload');
+Route::post('file/store', 'PostsController@store')->name('store');
 Route::post('file/share', 'PostsController@update')->name('file update');
 Route::post('file/trash', 'PostsController@update')->name('file trash');
 Route::post('file/restore', 'PostsController@update')->name('file restore');

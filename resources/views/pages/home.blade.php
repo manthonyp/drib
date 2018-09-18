@@ -131,7 +131,7 @@
             
             @if (Auth::guest())
 
-                <div class="mb-2">Sign in or ceate an account now</div>
+                <div class="mb-2">Sign in or create an account now</div>
                 <div class="d-flex justify-content-center align-items-center">
                     <a class="text-light mr-1" href="{{ route('login') }}">
                         <button type="button" class="btn--sign-in font-weight-light has-ripple">

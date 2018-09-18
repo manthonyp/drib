@@ -6,12 +6,12 @@ previewNode.parentNode.removeChild(previewNode);
 
 var uploaded = []
 Dropzone.options.dropzone = {
-    maxFilesize: 10,
-    maxFiles: 50,
+    maxFilesize: 50,
+    maxFiles: 20,
     thumbnailWidth: 40,
     thumbnailHeight: 40,
     dictDefaultMessage: 'Drop or select files to upload',
-    dictFileTooBig: 'File is too big. Max upload size is 10 MB.',
+    dictFileTooBig: 'File is too big. Max upload size is 50 MB.',
     dictCancelUpload: 'Cancel',
     dictRemoveFile: 'Remove',
     previewsContainer: '#file_preview',
@@ -25,12 +25,12 @@ Dropzone.options.dropzone = {
             $(file.previewTemplate).find('.remove').hide();
             $(file.previewTemplate).find('.success').show();
         });
-        this.on('error', function () {
+        this.on('error', function (file) {
             $(file.previewTemplate).find('.remove').hide();
             $(file.previewTemplate).find('.failed').show();
         });
         this.on('queuecomplete', function () {
-            var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>Files successfully uploaded.</div>';
+            var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>Queue completed! Page reloading...</div>';
 
             $('#status').append(alertbox);
             setTimeout(function() {

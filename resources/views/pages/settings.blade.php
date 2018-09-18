@@ -24,7 +24,7 @@
 
                         @else
 
-                            <div class="avatar-placeholder position-relative rounded-circle mx-auto mb-3" style="background:url({{asset('assets/default-avatar.png')}}) no-repeat scroll center center / cover;width:150px;height:150px">
+                            <div class="avatar-placeholder position-relative rounded-circle mx-auto mb-3" style="background:url(../assets/default-avatar.png) no-repeat scroll center center / cover;width:150px;height:150px">
                                 <div class="avatar-overlay position-absolute avatar-overlay d-flex flex-column justify-content-center rounded-circle text-light h-100 w-100">Change</div>
                                 {{ Form::label('avatar', 'Choose avatar',['class' => 'change-avatar position-relative w-100 h-100 mb-0']) }}
                             </div>

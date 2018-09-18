@@ -32,15 +32,19 @@
 <body>
     <div id="app">
 
-        @include('includes.nav')
+        <nav id="nav" class="position-relative d-flex justify-content-center align-items-center">
+            <div class="logo d-flex justify-content-center align-items-center">
+                <a href="/">
+                    <img src="{{asset('assets/logo-dark.png')}}" alt="drib">
+                </a>
+            </div>        
+        </nav>
 
-        <main role="main">
-            <div class="container">
-                <div class="position-relative d-flex flex-column justify-content-center text-center">
+        <main class="error-page" role="main">
+            <div class="container d-flex justify-content-center align-items-center h-100">
+                
+                @yield('content')
 
-                    @yield('content')
-
-                </div>
             </div>
         </main>
     </div>

@@ -4,6 +4,6 @@
 
 @section('content')
 
-    <h1 class="text-secondary">Sorry, the file you are looking for could not be found.</h1>
+    <h1 class="error-text text-secondary text-center">Sorry, the file you are looking for could not be found.</h1>
 
 @endsection

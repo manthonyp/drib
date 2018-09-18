@@ -139,9 +139,6 @@ class PostsController extends Controller
                 File::makeDirectory($path, 0777, true, true);
             }
 
-            // store file
-            $file->storeAs($path, $newFileName);
-
             // get mimetype
             $mime =$file->getMimeType();
 
@@ -160,6 +157,9 @@ class PostsController extends Controller
             $post->storage_path = $storage;
             $post->public_path = $public;
             $post->save();
+            
+            // store file
+            $file->storeAs($path, $newFileName);
         }    
     
         return redirect('/dashboard')->with('success', 'Files successfully uploaded.');

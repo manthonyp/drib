@@ -87,7 +87,7 @@
 
                                             @else
 
-                                                <div class="image-thumb rounded-circle" style="background:url({{asset('assets/default-avatar.png')}}) no-repeat scroll center center / cover;"></div>
+                                                <div class="image-thumb rounded-circle" style="background:url('../assets/default-avatar.png') no-repeat scroll center center / cover;"></div>
 
                                             @endif
                             
