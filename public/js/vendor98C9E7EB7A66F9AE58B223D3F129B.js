@@ -3555,6 +3555,7 @@ Dropzone.options.dropzone = {
     maxFiles: 20,
     thumbnailWidth: 40,
     thumbnailHeight: 40,
+    timeout: 0,
     dictDefaultMessage: 'Drop or select files to upload',
     dictFileTooBig: 'File is too big. Max upload size is 50 MB.',
     dictCancelUpload: 'Cancel',
