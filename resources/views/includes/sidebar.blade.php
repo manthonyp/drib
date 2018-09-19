@@ -3,7 +3,13 @@
         <section>
             <div class="brand d-flex justify-content-between align-items-center">
                 <a href="/">
-                    <img src="{{asset('assets/logo-dark.png')}}" alt="drib">
+                    
+                    @if (Auth::user()->theme == 'dark')
+                        <img src="{{asset('assets/logo-light.png')}}" alt="drib">
+                    @else
+                        <img src="{{asset('assets/logo-dark.png')}}" alt="drib">
+                    @endif
+
                 </a>
                 <button id="sidebar-hide" class="round-button dark text-dark justify-content-center mr-2" type="button">
                     <i class="material-icons">close</i>

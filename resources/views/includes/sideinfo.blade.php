@@ -177,7 +177,13 @@
     </div>
     <div class="loader">
         <div class="position-relative d-flex flex-column justify-content-center align-items-center w-100 h-100">
-            <img src="{{asset('assets/loader-dark.gif')}}" alt="loader">
+
+            @if (Auth::user()->theme == 'dark')
+                <img src="{{asset('assets/loader-light.gif')}}" alt="loader">
+            @else
+                <img src="{{asset('assets/loader-dark.gif')}}" alt="loader">
+            @endif
+            
         </div>
     </div>
 </div>

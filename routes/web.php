@@ -1,15 +1,10 @@
 <?php
 
-// Pages
-Route::get('/', 'PagesController@index')->name('home');
-Route::get('/about', 'PagesController@about')->name('about');
-Route::get('/terms', 'PagesController@terms')->name('tos');
-Route::get('/privacy', 'PagesController@privacy')->name('privacy');
-
 // User
 Auth::routes();
 Route::get('account/settings', 'UsersController@edit')->name('account settings');
 Route::post('account/update', 'UsersController@update')->name('account update');
+Route::post('theme/set', 'UsersController@update')->name('theme');
 
 // Dashboard
 Route::get('dashboard/view', 'DashboardController@view')->name('item view');
@@ -33,3 +28,9 @@ Route::post('file/share', 'PostsController@update')->name('file update');
 Route::post('file/trash', 'PostsController@update')->name('file trash');
 Route::post('file/restore', 'PostsController@update')->name('file restore');
 Route::post('file/delete', 'PostsController@destroy')->name('file delete');
+
+// Pages
+Route::get('/about', 'PagesController@about')->name('about');
+Route::get('/terms', 'PagesController@terms')->name('tos');
+Route::get('/privacy', 'PagesController@privacy')->name('privacy');
+Route::get('/', 'PagesController@index')->name('home');

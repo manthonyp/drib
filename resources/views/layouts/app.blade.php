@@ -29,7 +29,13 @@
     <title>@yield('title')</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+
+@if (Auth::user()->theme == 'dark')
+    <body class="dark-theme">
+@else
+    <body>
+@endif
+
     <div id="app">
         
         @include('includes.topbar')

@@ -242,7 +242,7 @@
                                 </a>
                                 <div class="card-body position-relative px-2 py-2">
                                     <h6 class="card-title text-truncate mb-0">{{$readd->original_name}}</h6>
-                                    <h6 class="text-truncate text-secondary mt-1 mb-0">{{$readd->size}}</h6>
+                                    <h6 class="text-truncate text-secondary mt-1 mb-0">{{$readd->updated_at->diffForHumans()}}</h6>
                         
                                     @if ($readd->category == 'audio')
                         

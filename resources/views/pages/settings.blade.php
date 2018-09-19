@@ -35,7 +35,7 @@
                         
                     </div>
                     <div class="form-group text-left">
-                        {{ Form::label('name', 'Name:') }}
+                        {{ Form::label('name', 'Username:') }}
                         {{ Form::text('name', $user->name, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group text-left">

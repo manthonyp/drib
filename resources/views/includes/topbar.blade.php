@@ -2,7 +2,13 @@
     <div class="container-fluid position-relative d-flex justify-content-between align-items-center">
         <div class="logo d-flex justify-content-center align-items-center">
             <a href="/">
-                <img src="{{asset('assets/logo-dark.png')}}" alt="drib">
+
+                @if (Auth::user()->theme == 'dark')
+                    <img src="{{asset('assets/logo-light.png')}}" alt="drib">
+                @else
+                    <img src="{{asset('assets/logo-dark.png')}}" alt="drib">
+                @endif
+                
             </a>
             <div class="d-flex">
                 <button id="sidebar-show" class="round-button dark text-dark d-flex justify-content-center ml-2" type="button">
@@ -79,13 +85,39 @@
                         <div class="d-table-cell text-center pr-3"><i class="fas fa-columns"></i></div>
                         <div class="d-table-cell">Dashboard</div>
                     </a>
+
+                    @if (Auth::user()->theme == 'dark')
+
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="document.getElementById('theme_changer').submit();">
+                            <div class="d-table-cell text-center pr-3"><i class="far fa-lightbulb"></i></div>
+                            <div class="d-table-cell">Light Theme</div>
+                        </a>
+ 
+                        {!! Form::open(['action' => 'UsersController@update', 'method' => 'POST', 'id' => 'theme_changer', 'class' => 'd-none']) !!}
+                            <input type="text" name="theme" id="theme" value="light">
+                        {!! Form::close() !!}
+                    
+                    @else
+
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="document.getElementById('theme_changer').submit();">
+                            <div class="d-table-cell text-center pr-3"><i class="fas fa-lightbulb"></i></div>
+                            <div class="d-table-cell">Dark Theme</div>
+                        </a>
+                        
+                        {!! Form::open(['action' => 'UsersController@update', 'method' => 'POST', 'id' => 'theme_changer', 'class' => 'd-none']) !!}
+                            <input type="text" name="theme" id="theme" value="dark">
+                        {!! Form::close() !!}
+                        
+                    @endif
                     
                     @if (Auth::user()->isAdmin())
 
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/dashboard/admin">
                             <div class="d-table-cell text-center pr-3"><i class="fas fa-shield-alt"></i></div>
                             <div class="d-table-cell">Admin</div>
                         </a>
+                        <div class="dropdown-divider"></div>
 
                     @endif
 
