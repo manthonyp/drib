@@ -23,7 +23,10 @@
                                 <h6 class="mb-0" data-dz-size></h6>
                             </div>
                         </div>
-                        <a href="javascript:void(0)" class="remove text-light border rounded px-1" data-dz-remove>Remove</a>
+                        <div class="d-flex flex-column justify-content-center align-items-center">
+                            <a href="javascript:void(0)" class="remove text-light border rounded px-1" data-dz-remove>Remove</a>
+                            <div class="progress-text text-center"></div>
+                        </div>
                         <div class="success text-success">
                             <i class="material-icons">done</i>
                         </div>
@@ -34,7 +37,6 @@
                     <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                         <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
                     </div>
-                    <div class="progress-text text-center"></div>
                     <div class="upload-error" data-dz-errormessage></div>
                 </div>
             </div>

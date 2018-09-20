@@ -11660,7 +11660,9 @@ nav .admin-badge i {
 }
 
 #upload_modal #file_preview .remove {
-  font-size: 12px;
+  font-size: 10px;
+  min-width: 47px;
+  text-align: center;
   cursor: pointer;
 }
 
