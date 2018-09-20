@@ -118,7 +118,7 @@ class DashboardController extends Controller
                         ->posts()
                         ->where('trashed', true)
                         ->orderby('id', 'desc')
-                        ->paginate(12);
+                        ->paginate(18);
         
         return view('dashboard.trash')->with('posts', $posts);
     }

@@ -160,9 +160,9 @@ class PostsController extends Controller
             
             // store file
             $file->storeAs($path, $newFileName);
+
+            return response()->json($file);
         }    
-    
-        return redirect('/dashboard')->with('success', 'Files successfully uploaded.');
     }
 
     public function shareLink(Request $request)
