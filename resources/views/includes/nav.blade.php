@@ -93,15 +93,15 @@
                             <div class="d-table-cell text-center pr-3"><i class="fas fa-cog"></i></div>
                             <div class="d-table-cell">Settings</div>
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            {{ csrf_field() }}
+                        </form>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                             <div class="d-table-cell text-center pr-3"><i class="fas fa-sign-out-alt"></i></div>
                             <div class="d-table-cell">Sign Out</div>
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            {{ csrf_field() }}
-                        </form>
                     </div>
                 </div>
             </div>

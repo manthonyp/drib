@@ -520,17 +520,17 @@ $(function() {
         });
     });
 
-    // copy link to cipboad
+    // copy link to clipboard
     // change class when clicked
     $('.clipboard-copy').click(function() {
-        $(this).removeClass('btn-default').addClass('btn-success').text('').append('<i class="fas fa-check-square mr-2"></i>Copied to clipboard').attr('disabled', '').attr('aria-disabled', 'true');
+        $(this).text('').append('<i class="fas fa-check-square mr-2"></i>Copied to clipboard').attr('disabled', '').attr('aria-disabled', 'true');
         $('#share_modal input').select();
         document.execCommand('copy');
     });
 
     // reset clipboard copy button to btn-default
     $('#share_modal').on('hidden.bs.modal', function() {
-        $('.clipboard-copy').removeClass('btn-success').addClass('btn-default').text('').append('<i class="far fa-copy mr-2"></i>Copy to clipboard').removeAttr('disabled', '').removeAttr('aria-disabled', 'true');
+        $('.clipboard-copy').text('').append('<i class="far fa-copy mr-2"></i>Copy to clipboard').removeAttr('disabled', '').removeAttr('aria-disabled', 'true');
     });
 
     // get shareable link

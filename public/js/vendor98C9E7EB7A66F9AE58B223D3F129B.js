@@ -3558,24 +3558,30 @@ Dropzone.options.dropzone = {
     timeout: 0,
     dictDefaultMessage: 'Drop or select files to upload',
     dictFileTooBig: 'File is too big. Max upload size is 50 MB.',
-    dictCancelUpload: 'Cancel',
-    dictRemoveFile: 'Remove',
     previewsContainer: '#file_preview',
     previewTemplate: previewTemplate,
     init: function () {
-        this.on('addedfile', function () {
+        this.on('addedfile', function() {
             $('#upload_modal .dz-message').hide();
             $('#file_preview').show();
         });
-        this.on('success', function (file) {
+        this.on('processing', function(file) {
+            $(file.previewTemplate).find('.remove').text('Cancel');
+        });
+        this.on('uploadprogress', function(file, progress) {
+            $(file.previewTemplate).find('.progress-text').text(Math.round(progress)+'%');
+        });
+        this.on('success', function(file) {
             $(file.previewTemplate).find('.remove').hide();
             $(file.previewTemplate).find('.success').show();
+            $(file.previewTemplate).find('.progress-text').hide();
         });
-        this.on('error', function (file) {
+        this.on('error', function(file) {
             $(file.previewTemplate).find('.remove').hide();
-            $(file.previewTemplate).find('.failed').show();
+            $(file.previewTemplate).find('.fail').show();
+            $(file.previewTemplate).find('.progress-text').hide();
         });
-        this.on('queuecomplete', function () {
+        this.on('queuecomplete', function() {
             var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>Queue completed! Page reloading...</div>';
 
             $('#status').append(alertbox);
@@ -4108,17 +4114,17 @@ $(function() {
         });
     });
 
-    // copy link to cipboad
+    // copy link to clipboard
     // change class when clicked
     $('.clipboard-copy').click(function() {
-        $(this).removeClass('btn-default').addClass('btn-success').text('').append('<i class="fas fa-check-square mr-2"></i>Copied to clipboard').attr('disabled', '').attr('aria-disabled', 'true');
+        $(this).text('').append('<i class="fas fa-check-square mr-2"></i>Copied to clipboard').attr('disabled', '').attr('aria-disabled', 'true');
         $('#share_modal input').select();
         document.execCommand('copy');
     });
 
     // reset clipboard copy button to btn-default
     $('#share_modal').on('hidden.bs.modal', function() {
-        $('.clipboard-copy').removeClass('btn-success').addClass('btn-default').text('').append('<i class="far fa-copy mr-2"></i>Copy to clipboard').removeAttr('disabled', '').removeAttr('aria-disabled', 'true');
+        $('.clipboard-copy').text('').append('<i class="far fa-copy mr-2"></i>Copy to clipboard').removeAttr('disabled', '').removeAttr('aria-disabled', 'true');
     });
 
     // get shareable link

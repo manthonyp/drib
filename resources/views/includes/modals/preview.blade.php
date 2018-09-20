@@ -40,8 +40,8 @@
                     {{-- <iframe style="display:none" src="" width="100%" height="600px"></iframe> --}}
 
                     {{-- if other --}}
-                    <div class="no-preview text-center rounded p-5">
-                        <h3 class="text-uppercase">Sorry, preview not available.</h3>
+                    <div class="no-preview text-center p-2">
+                        <h3 class="text-light text-uppercase">Preview not available</h3>
                     </div>
 
                 </div>

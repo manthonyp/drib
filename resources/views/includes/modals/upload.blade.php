@@ -12,24 +12,29 @@
             {!! Form::open(['action' => 'PostsController@store', 'method' => 'PUT', 'enctype' => 'multipart/form-data', 'id' => 'dropzone', 'class' => 'dropzone d-flex flex-wrap justify-content-center align-items-center h-100', 'files' => true]) !!}
 
             <div id="file_preview" class="rounded p-3">
-                <div id="preview_template" class="preview-row position-relative d-flex flex-column">
-                    <div class="preview-item d-flex justify-content-between align-items-center">
-                        <div class="d-flex justify-content-between align-items-center">
+                <div id="preview_template" class="preview-row position-relative d-flex flex-column w-100">
+                    <div class="preview-item d-flex justify-content-between align-items-center w-100">
+                        <div class="d-flex justify-content-between align-items-center text-truncate">
                             <div class="preview-img position-relative d-flex flex-column align-items-center justify-content-center mr-2">
-                                <img class="image-thumb" data-dz-thumbnail>
+                                <img class="image-thumb" src="{{asset('assets/upload-placeholder.png')}}" data-dz-thumbnail>
                             </div>
-                            <div class="d-flex flex-column mr-2">
-                                <h6 class="mb-1" data-dz-name></h6>
+                            <div class="d-flex flex-column text-truncate mr-2">
+                                <h6 class="text-truncate mb-1" data-dz-name></h6>
                                 <h6 class="mb-0" data-dz-size></h6>
                             </div>
                         </div>
-                        <a href="javascript:void(0)" class="remove text-light" data-dz-remove>Remove</a>
-                        <div class="success text-success">✔</div>
-                        <div class="fail text-danger">✘</div>
+                        <a href="javascript:void(0)" class="remove text-light border rounded px-1" data-dz-remove>Remove</a>
+                        <div class="success text-success">
+                            <i class="material-icons">done</i>
+                        </div>
+                        <div class="fail text-danger">
+                            <i class="material-icons">clear</i>
+                        </div>
                     </div>
                     <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                         <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
                     </div>
+                    <div class="progress-text text-center"></div>
                     <div class="upload-error" data-dz-errormessage></div>
                 </div>
             </div>

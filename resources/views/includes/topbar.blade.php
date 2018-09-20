@@ -54,7 +54,7 @@
             </button>
             <span data-toggle="tooltip" data-placement="bottom" title="Upload">
                 <button id="upload-show" class="round-button dark text-dark d-flex justify-content-center mr-4" type="button" data-toggle="modal" data-target="#upload_modal">
-                    <i class="material-icons">add</i>
+                    <i class="material-icons">publish</i>
                     <div class="rippleJS"></div>
                 </button>
             </span>
@@ -90,7 +90,7 @@
 
                         <a class="dropdown-item" href="javascript:void(0)" onclick="document.getElementById('theme_changer').submit();">
                             <div class="d-table-cell text-center pr-3"><i class="far fa-lightbulb"></i></div>
-                            <div class="d-table-cell">Light Theme</div>
+                            <div class="d-table-cell">Disable Dark Mode</div>
                         </a>
  
                         {!! Form::open(['action' => 'UsersController@update', 'method' => 'POST', 'id' => 'theme_changer', 'class' => 'd-none']) !!}
@@ -101,7 +101,7 @@
 
                         <a class="dropdown-item" href="javascript:void(0)" onclick="document.getElementById('theme_changer').submit();">
                             <div class="d-table-cell text-center pr-3"><i class="fas fa-lightbulb"></i></div>
-                            <div class="d-table-cell">Dark Theme</div>
+                            <div class="d-table-cell">Enable Dark Mode</div>
                         </a>
                         
                         {!! Form::open(['action' => 'UsersController@update', 'method' => 'POST', 'id' => 'theme_changer', 'class' => 'd-none']) !!}
@@ -112,12 +112,10 @@
                     
                     @if (Auth::user()->isAdmin())
 
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/dashboard/admin">
                             <div class="d-table-cell text-center pr-3"><i class="fas fa-shield-alt"></i></div>
                             <div class="d-table-cell">Admin</div>
                         </a>
-                        <div class="dropdown-divider"></div>
 
                     @endif
 
@@ -125,15 +123,15 @@
                         <div class="d-table-cell text-center pr-3"><i class="fas fa-cog"></i></div>
                         <div class="d-table-cell">Settings</div>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        {{ csrf_field() }}
+                    </form>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                         <div class="d-table-cell text-center pr-3"><i class="fas fa-sign-out-alt"></i></div>
                         <div class="d-table-cell">Sign Out</div>
                     </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        {{ csrf_field() }}
-                    </form>
                 </div>
             </div>
         </div>

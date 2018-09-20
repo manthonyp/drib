@@ -33,7 +33,7 @@ class UsersController extends Controller
             $user->theme = $request->input('theme');
             $user->save();
 
-            return redirect()->back()->with('success', 'Theme successfully changed');
+            return redirect()->back();
         } 
         
         else {

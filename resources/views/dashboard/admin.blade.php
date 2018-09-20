@@ -68,9 +68,9 @@
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-6 col-xl-4">
-                <div class="item card border rounded mb-4 p-2">
+                <div class="item mb-4 p-2">
                     <div class="d-flex flex-column">
-                        <div class="sub-header sticky-top border-bottom bg-white py-2 mb-2">
+                        <div class="sub-header sticky-top border-bottom bg-light py-2 mb-2">
                             <h6 class="mb-0">Recent Users</h6>
                         </div>
                         <div class="row list">
@@ -106,9 +106,9 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-6 col-xl-4">
-                <div class="item card border rounded mb-4 p-2">
+                    <div class="item mb-4 p-2">
                     <div class="d-flex flex-column">
-                        <div class="sub-header sticky-top border-bottom bg-white py-2 mb-2">
+                        <div class="sub-header sticky-top border-bottom bg-light py-2 mb-2">
                             <h6 class="mb-0">Recently Uploaded</h6>
                         </div>
                         <div class="row list">
@@ -155,7 +155,7 @@
                                         </a>
                                         <div class="card-body position-relative px-2 py-2">
                                             <h6 class="card-title text-truncate mb-0">{{$reup->original_name}}</h6>
-                                            <h6 class="text-truncate text-secondary mt-1 mb-0">{{$reup->updated_at->diffForHumans()}}</h6>
+                                            <h6 class="text-truncate text-secondary mt-1 mb-0">{{$reup->created_at->diffForHumans()}}</h6>
                                 
                                             @if ($reup->category == 'audio')
                                 
@@ -228,9 +228,9 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-12 col-xl-4">
-                <div class="item card border rounded mb-4 p-2">
+                    <div class="item mb-4 p-2">
                     <div class="d-flex flex-column">
-                        <div class="sub-header sticky-top border-bottom bg-white py-2 mb-2">
+                        <div class="sub-header sticky-top border-bottom bg-light py-2 mb-2">
                             <h6 class="mb-0">Most Downloads</h6>
                         </div>
                         <div class="row list">

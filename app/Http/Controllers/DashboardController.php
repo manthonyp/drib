@@ -45,7 +45,7 @@ class DashboardController extends Controller
                         ->posts()
                         ->where('trashed', false)
                         ->orderby('id', 'desc')
-                        ->paginate(12);
+                        ->paginate(18);
         
         return view('dashboard.all')->with('posts', $posts);
     }
@@ -198,23 +198,18 @@ class DashboardController extends Controller
 
         // get latest regsitered users
         $recentUsers = User::latest()
-                        ->take(6)
+                        ->take(10)
                         ->get();
 
         // get latest uploads
         $recentUploads = Post::latest()
-                        ->take(6)
+                        ->take(10)
                         ->get();
 
         // get most downloaded files
         $recentDownloads = Post::where('downloads', '<>', 0)
                         ->orderby('downloads', 'desc')
-                        ->take(6)
-                        ->get();
-
-        // get reported files
-        $reported = Post::inRandomOrder()
-                        ->take(6)
+                        ->take(10)
                         ->get();
 
         return view('dashboard.admin')
@@ -227,7 +222,6 @@ class DashboardController extends Controller
                         ->with('video', $video)
                         ->with('recentUsers', $recentUsers)
                         ->with('recentUploads', $recentUploads)
-                        ->with('recentDownloads', $recentDownloads)
-                        ->with('reported', $reported);
+                        ->with('recentDownloads', $recentDownloads);
     }
 }
