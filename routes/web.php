@@ -23,11 +23,12 @@ Route::get('file/shared/link', 'PostsController@shareLink');
 Route::get('file/info', 'PostsController@getFileInfo');
 Route::get('file/download/{id}/auth', 'PostsController@userDownload');
 Route::get('file/download/{id}/{share_token}', 'PostsController@guestDownload');
-Route::post('file/store', 'PostsController@store')->name('store');
+Route::put('file/store', 'PostsController@store')->name('store');
 Route::post('file/share', 'PostsController@update')->name('file update');
 Route::post('file/trash', 'PostsController@update')->name('file trash');
 Route::post('file/restore', 'PostsController@update')->name('file restore');
 Route::post('file/delete', 'PostsController@destroy')->name('file delete');
+Route::post('file/deleteMultiple', 'PostsController@destroyMultiple')->name('file delete multiple');
 
 // Pages
 Route::get('/about', 'PagesController@about')->name('about');

@@ -4,7 +4,6 @@ previewNode.id = "";
 var previewTemplate = previewNode.parentNode.innerHTML;
 previewNode.parentNode.removeChild(previewNode);
 
-var uploaded = []
 Dropzone.options.dropzone = {
     maxFilesize: 50,
     maxFiles: 20,

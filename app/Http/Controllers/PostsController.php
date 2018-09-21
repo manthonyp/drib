@@ -426,4 +426,23 @@ class PostsController extends Controller
 
         return response()->json($post);
     }
+
+    public function destroyMultiple()
+    {
+        // get file with id
+        $posts = Post::where('user_id', auth()->user()->id)->get(['id', 'public_path', 'trashed']);
+
+        foreach ($posts as $post) {
+
+            if ($post->trashed == true) {
+                // delete file from storage
+                Storage::delete($post->public_path);
+
+                // delete from database
+                $post->delete();
+            }
+        }
+       
+        return redirect()->back()->with('success', 'Trash has been cleaned');
+    }
 }

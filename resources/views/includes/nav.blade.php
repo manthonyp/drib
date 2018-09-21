@@ -14,7 +14,7 @@
                 
             </div>
 
-            <div id="nav-dropdown" class="dropdown ml-3">
+            <div id="nav-dropdown" class="dropdown ml-2">
                 <button class="dropdown-toggle round-button dark text-dark d-flex justify-content-center" type="button" data-toggle="dropdown" role="button" aria-expanded="false">
                     <i class="material-icons">menu</i>
                     <div class="rippleJS"></div>

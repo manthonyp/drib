@@ -7,6 +7,18 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="page-title mb-0">Trash</h1>
         <div class="d-flex">
+
+            @if (count($posts) > 0)
+
+                {!! Form::open(['action' => 'PostsController@destroyMultiple', 'method' => 'POST']) !!}
+                    <button class="round-button dark text-dark d-flex justify-content-center mr-2" type="submit" data-toggle="tooltip" data-placement="bottom" title="Clean Trash">
+                        <i class="material-icons">delete</i>
+                        <div class="rippleJS"></div>
+                    </button>
+                {!! Form::close() !!}
+
+            @endif
+
             <button class="grid-view round-button dark text-dark d-flex justify-content-center mr-2 {{ Session::get('view') == 'grid' ? 'active' : '' }}" type="button" data-view="grid" data-toggle="tooltip" data-placement="bottom" title="Grid View">
                 <i class="material-icons">view_module</i>
                 <div class="rippleJS"></div>
