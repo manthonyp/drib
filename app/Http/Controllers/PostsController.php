@@ -20,17 +20,6 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
-        function sizeConvert($bytes)
-        {
-            $units = ['b', 'KB', 'MB', 'GB', 'TB', 'PB'];
-
-            for ($i = 0; $bytes > 1024; $i++) {
-                $bytes /= 1024;
-            }
-
-            return round($bytes, 2) . ' ' . $units[$i];
-        }
-
         // handle file upload
         if ($request->hasFile('file')) {
             
@@ -47,8 +36,8 @@ class PostsController extends Controller
             $extension = Str::lower(pathinfo($filename, PATHINFO_EXTENSION));
 
             // get file size
-            $filesize = $file->getClientSize();
-            $filesize = sizeConvert($filesize);
+            $fileBytesSize = $file->getClientSize();
+            $filesize = sizeConvert($fileBytesSize);
 
             // determine file type
             if
@@ -154,6 +143,7 @@ class PostsController extends Controller
             $post->format = $extension;
             $post->mimetype = $mime;
             $post->size = $filesize;
+            $post->size_bytes = $fileBytesSize;
             $post->storage_path = $storage;
             $post->public_path = $public;
             $post->save();

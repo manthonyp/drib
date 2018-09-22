@@ -89,7 +89,7 @@
                     @if (Auth::user()->theme == 'dark')
 
                         <a class="dropdown-item" href="javascript:void(0)" onclick="document.getElementById('theme_changer').submit();">
-                            <div class="d-table-cell text-center pr-3"><i class="far fa-lightbulb"></i></div>
+                            <div class="d-table-cell text-center pr-3"><i class="fas fa-adjust"></i></div>
                             <div class="d-table-cell">Disable Dark Mode</div>
                         </a>
  
@@ -100,7 +100,7 @@
                     @else
 
                         <a class="dropdown-item" href="javascript:void(0)" onclick="document.getElementById('theme_changer').submit();">
-                            <div class="d-table-cell text-center pr-3"><i class="fas fa-lightbulb"></i></div>
+                            <div class="d-table-cell text-center pr-3"><i class="fas fa-adjust"></i></div>
                             <div class="d-table-cell">Enable Dark Mode</div>
                         </a>
                         
