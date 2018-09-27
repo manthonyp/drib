@@ -1,6 +1,6 @@
 @extends('layouts.page')
 
-@section('title', 'Forgot Password - dbrib')
+@section('title', 'Forgot Password - drib')
 
 @section('content')
 
