@@ -23,14 +23,14 @@ class DashboardController extends Controller
                         ->posts()
                         ->where('trashed', false)
                         ->orderby('updated_at', 'desc')
-                        ->take(6)
+                        ->take(4)
                         ->get();
 
         $recentlyAdded = User::find($id)
                         ->posts()
                         ->where('trashed', false)
                         ->orderby('id', 'desc')
-                        ->take(6)
+                        ->take(8)
                         ->get();
             
         return view('dashboard.index')
@@ -45,7 +45,7 @@ class DashboardController extends Controller
                         ->posts()
                         ->where('trashed', false)
                         ->orderby('id', 'desc')
-                        ->paginate(18);
+                        ->paginate(20);
         
         return view('dashboard.all')->with('posts', $posts);
     }
@@ -106,7 +106,7 @@ class DashboardController extends Controller
                         ->where('trashed', false)
                         ->where('shared', true)
                         ->orderby('id', 'desc')
-                        ->paginate(12);
+                        ->paginate(20);
         
         return view('dashboard.shared')->with('posts', $posts);
     }
@@ -118,7 +118,7 @@ class DashboardController extends Controller
                         ->posts()
                         ->where('trashed', true)
                         ->orderby('id', 'desc')
-                        ->paginate(18);
+                        ->paginate(20);
         
         return view('dashboard.trash')->with('posts', $posts);
     }
@@ -139,7 +139,7 @@ class DashboardController extends Controller
                         ->where('user_id', $id)
                         ->where('trashed', false)
                         ->orderby('id', 'desc')
-                        ->take(50)
+                        ->take(100)
                         ->get();
         
         $count = count($posts);

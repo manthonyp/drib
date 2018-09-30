@@ -29,7 +29,7 @@
 
                 @foreach ($postsToday as $today)
 
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" data-id="{{$today->id}}">
+                    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-3" data-id="{{$today->id}}">
                         <div class="card" tabindex='1'>
                             <a class="preview-thumb" href="javascript:void(0)" data-for="{{$today->category}}" data-id="{{$today->id}}" data-target="#preview_modal">
                                 <div class="card-img-top position-relative d-flex flex-column align-items-center justify-content-center border-bottom">
@@ -54,15 +54,48 @@
                                         <h4 class="text-uppercase">{{$today->format}}</h4>
                                     
                                     @elseif ($today->category == 'document')
-                    
-                                        <i class="fas fa-file-alt"></i>
-                                        <h4 class="text-uppercase">{{$today->format}}</h4>
+
+                                        @if ($today->format == 'pdf')
+   
+                                           <i class="fas fa-file-pdf"></i>
+                                           <h4 class="text-uppercase">{{$today->format}}</h4>
+                                           
+                                        @elseif ($today->format == 'doc' || $today->format == 'docx')
+    
+                                            <i class="fas fa-file-word"></i>
+                                            <h4 class="text-uppercase">{{$today->format}}</h4>
+    
+                                        @elseif ($today->format == 'xls' || $today->format == 'xlsx')
+    
+                                            <i class="fas fa-file-excel"></i>
+                                            <h4 class="text-uppercase">{{$today->format}}</h4>
+    
+                                        @elseif ($today->format == 'ppt' || $today->format == 'pptx')
+    
+                                            <i class="fas fa-file-powerpoint"></i>
+                                            <h4 class="text-uppercase">{{$today->format}}</h4>
+    
+                                        @else
+    
+                                            <i class="fas fa-file-alt"></i>
+                                            <h4 class="text-uppercase">{{$today->format}}</h4>
+    
+                                        @endif
                                     
                                     @elseif ($today->category == 'other')
-                    
-                                        <i class="fas fa-file"></i>
-                                        <h4 class="text-uppercase">{{$today->format}}</h4>
-                    
+    
+                                        @if (in_array($today->format, ['php','css','htm','html','js','json','asm','bas','fs','py','luac','cc','pl','nupkg','java','cpp','mm','fmb','swift','perl','d','bal','rpg','graphml','jav','pyc','asic','cxx','pas','x','l','rb','jl','f','lss','styl','jade','pyx','cbl','j','c++','cp','sass','less','scss']))
+    
+                                            <i class="fas fa-file-code"></i>
+                                            <h4 class="text-uppercase">{{$today->format}}</h4>
+                                            
+                                        @else
+    
+                                            <i class="fas fa-file"></i>
+                                            <h4 class="text-uppercase">{{$today->format}}</h4>
+                                            
+                                        @endif
+    
                                     @endif
                     
                                 </div>
@@ -192,7 +225,7 @@
 
                 @foreach ($postsYesterday as $yesterday)
 
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" data-id="{{$yesterday->id}}">
+                    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-3" data-id="{{$yesterday->id}}">
                         <div class="card" tabindex='1'>
                             <a class="preview-thumb" href="javascript:void(0)" data-for="{{$yesterday->category}}" data-id="{{$yesterday->id}}" data-target="#preview_modal">
                                 <div class="card-img-top position-relative d-flex flex-column align-items-center justify-content-center border-bottom">
@@ -217,15 +250,48 @@
                                         <h4 class="text-uppercase">{{$yesterday->format}}</h4>
                                     
                                     @elseif ($yesterday->category == 'document')
-                    
-                                        <i class="fas fa-file-alt"></i>
-                                        <h4 class="text-uppercase">{{$yesterday->format}}</h4>
+
+                                        @if ($yesterday->format == 'pdf')
+   
+                                           <i class="fas fa-file-pdf"></i>
+                                           <h4 class="text-uppercase">{{$yesterday->format}}</h4>
+                                           
+                                        @elseif ($yesterday->format == 'doc' || $yesterday->format == 'docx')
+    
+                                            <i class="fas fa-file-word"></i>
+                                            <h4 class="text-uppercase">{{$yesterday->format}}</h4>
+    
+                                        @elseif ($yesterday->format == 'xls' || $yesterday->format == 'xlsx')
+    
+                                            <i class="fas fa-file-excel"></i>
+                                            <h4 class="text-uppercase">{{$yesterday->format}}</h4>
+    
+                                        @elseif ($yesterday->format == 'ppt' || $yesterday->format == 'pptx')
+    
+                                            <i class="fas fa-file-powerpoint"></i>
+                                            <h4 class="text-uppercase">{{$yesterday->format}}</h4>
+    
+                                        @else
+    
+                                            <i class="fas fa-file-alt"></i>
+                                            <h4 class="text-uppercase">{{$yesterday->format}}</h4>
+    
+                                        @endif
                                     
                                     @elseif ($yesterday->category == 'other')
-                    
-                                        <i class="fas fa-file"></i>
-                                        <h4 class="text-uppercase">{{$yesterday->format}}</h4>
-                    
+    
+                                        @if (in_array($yesterday->format, ['php','css','htm','html','js','json','asm','bas','fs','py','luac','cc','pl','nupkg','java','cpp','mm','fmb','swift','perl','d','bal','rpg','graphml','jav','pyc','asic','cxx','pas','x','l','rb','jl','f','lss','styl','jade','pyx','cbl','j','c++','cp','sass','less','scss']))
+    
+                                            <i class="fas fa-file-code"></i>
+                                            <h4 class="text-uppercase">{{$yesterday->format}}</h4>
+                                            
+                                        @else
+    
+                                            <i class="fas fa-file"></i>
+                                            <h4 class="text-uppercase">{{$yesterday->format}}</h4>
+                                            
+                                        @endif
+    
                                     @endif
                     
                                 </div>
@@ -355,7 +421,7 @@
 
                 @foreach ($postsWeek as $week)
 
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" data-id="{{$week->id}}">
+                    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-3" data-id="{{$week->id}}">
                         <div class="card" tabindex='1'>
                             <a class="preview-thumb" href="javascript:void(0)" data-for="{{$week->category}}" data-id="{{$week->id}}" data-target="#preview_modal">
                                 <div class="card-img-top position-relative d-flex flex-column align-items-center justify-content-center border-bottom">
@@ -380,15 +446,48 @@
                                         <h4 class="text-uppercase">{{$week->format}}</h4>
                                     
                                     @elseif ($week->category == 'document')
-                    
-                                        <i class="fas fa-file-alt"></i>
-                                        <h4 class="text-uppercase">{{$week->format}}</h4>
+
+                                        @if ($week->format == 'pdf')
+   
+                                           <i class="fas fa-file-pdf"></i>
+                                           <h4 class="text-uppercase">{{$week->format}}</h4>
+                                           
+                                        @elseif ($week->format == 'doc' || $week->format == 'docx')
+    
+                                            <i class="fas fa-file-word"></i>
+                                            <h4 class="text-uppercase">{{$week->format}}</h4>
+    
+                                        @elseif ($week->format == 'xls' || $week->format == 'xlsx')
+    
+                                            <i class="fas fa-file-excel"></i>
+                                            <h4 class="text-uppercase">{{$week->format}}</h4>
+    
+                                        @elseif ($week->format == 'ppt' || $week->format == 'pptx')
+    
+                                            <i class="fas fa-file-powerpoint"></i>
+                                            <h4 class="text-uppercase">{{$week->format}}</h4>
+    
+                                        @else
+    
+                                            <i class="fas fa-file-alt"></i>
+                                            <h4 class="text-uppercase">{{$week->format}}</h4>
+    
+                                        @endif
                                     
                                     @elseif ($week->category == 'other')
-                    
-                                        <i class="fas fa-file"></i>
-                                        <h4 class="text-uppercase">{{$week->format}}</h4>
-                    
+    
+                                        @if (in_array($week->format, ['php','css','htm','html','js','json','asm','bas','fs','py','luac','cc','pl','nupkg','java','cpp','mm','fmb','swift','perl','d','bal','rpg','graphml','jav','pyc','asic','cxx','pas','x','l','rb','jl','f','lss','styl','jade','pyx','cbl','j','c++','cp','sass','less','scss']))
+    
+                                            <i class="fas fa-file-code"></i>
+                                            <h4 class="text-uppercase">{{$week->format}}</h4>
+                                            
+                                        @else
+    
+                                            <i class="fas fa-file"></i>
+                                            <h4 class="text-uppercase">{{$week->format}}</h4>
+                                            
+                                        @endif
+    
                                     @endif
                     
                                 </div>
@@ -518,7 +617,7 @@
 
                 @foreach ($postsMonth as $month)
 
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" data-id="{{$month->id}}">
+                    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-3" data-id="{{$month->id}}">
                         <div class="card" tabindex='1'>
                             <a class="preview-thumb" href="javascript:void(0)" data-for="{{$month->category}}" data-id="{{$month->id}}" data-target="#preview_modal">
                                 <div class="card-img-top position-relative d-flex flex-column align-items-center justify-content-center border-bottom">
@@ -543,15 +642,48 @@
                                         <h4 class="text-uppercase">{{$month->format}}</h4>
                                     
                                     @elseif ($month->category == 'document')
-                    
-                                        <i class="fas fa-file-alt"></i>
-                                        <h4 class="text-uppercase">{{$month->format}}</h4>
+
+                                        @if ($month->format == 'pdf')
+   
+                                           <i class="fas fa-file-pdf"></i>
+                                           <h4 class="text-uppercase">{{$month->format}}</h4>
+                                           
+                                        @elseif ($month->format == 'doc' || $month->format == 'docx')
+    
+                                            <i class="fas fa-file-word"></i>
+                                            <h4 class="text-uppercase">{{$month->format}}</h4>
+    
+                                        @elseif ($month->format == 'xls' || $month->format == 'xlsx')
+    
+                                            <i class="fas fa-file-excel"></i>
+                                            <h4 class="text-uppercase">{{$month->format}}</h4>
+    
+                                        @elseif ($month->format == 'ppt' || $month->format == 'pptx')
+    
+                                            <i class="fas fa-file-powerpoint"></i>
+                                            <h4 class="text-uppercase">{{$month->format}}</h4>
+    
+                                        @else
+    
+                                            <i class="fas fa-file-alt"></i>
+                                            <h4 class="text-uppercase">{{$month->format}}</h4>
+    
+                                        @endif
                                     
                                     @elseif ($month->category == 'other')
-                    
-                                        <i class="fas fa-file"></i>
-                                        <h4 class="text-uppercase">{{$month->format}}</h4>
-                    
+    
+                                        @if (in_array($month->format, ['php','css','htm','html','js','json','asm','bas','fs','py','luac','cc','pl','nupkg','java','cpp','mm','fmb','swift','perl','d','bal','rpg','graphml','jav','pyc','asic','cxx','pas','x','l','rb','jl','f','lss','styl','jade','pyx','cbl','j','c++','cp','sass','less','scss']))
+    
+                                            <i class="fas fa-file-code"></i>
+                                            <h4 class="text-uppercase">{{$month->format}}</h4>
+                                            
+                                        @else
+    
+                                            <i class="fas fa-file"></i>
+                                            <h4 class="text-uppercase">{{$month->format}}</h4>
+                                            
+                                        @endif
+    
                                     @endif
                     
                                 </div>

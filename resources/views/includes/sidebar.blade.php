@@ -69,14 +69,14 @@
                 @endif
 
                 <hr class="w-100">
-                <div class="w-100 px-4">
+                <div class="text-secondary w-100 px-4">
                     <div class="d-flex flex-column mb-3">
-                        <small class="text-secondary">Files Uploaded</small>
-                        <div>{{ totalFileUpload() }} / ∞</div>
+                        <small>Files Uploaded</small>
+                        <div class="font-weight-bold">{{ totalFileUpload() }} / ∞</div>
                     </div>
                     <div class="d-flex flex-column">
-                        <small class="text-secondary">Storage Usage</small>
-                        <div>{{ totalStorageUse() }} / ∞</div>
+                        <small>Storage Usage</small>
+                        <div class="font-weight-bold">{{ totalStorageUse() }} / ∞</div>
                     </div>
                 </div>
                 

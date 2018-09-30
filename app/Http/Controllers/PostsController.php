@@ -39,81 +39,35 @@ class PostsController extends Controller
             $fileBytesSize = $file->getClientSize();
             $filesize = sizeConvert($fileBytesSize);
 
+            // set list of extension in an array
+            $inArchive = ['zip','rar','tar','gz','tgz','7z'];
+            $inAudio = ['mp3','m4a','wav','flac','ogg'];
+            $inVideo = ['mp4','m4v','mkv','flv','ogv','mov','wmv','webm','avi'];
+            $inImage = ['jpeg','jpg','bmp','png','gif','svg','ico','tiff','webp','jfif'];
+            $inDocument = ['pdf','doc','docx','xls','xlsx','ppt','pptx','pps','rtf','epub','odf','ods','pub','txt'];
+
             // determine file type
-            if
-                (
-                    $extension == 'zip'     ||
-                    $extension == 'rar'     ||
-                    $extension == 'tar'     ||
-                    $extension == 'gz'      ||
-                    $extension == 'tgz'     ||
-                    $extension == '7z'  
-                )
-            {
+            if (in_array($extension, $inArchive)) {
                 $filetype = 'archive';
             }
 
-            elseif
-                (
-                    $extension == 'mp3'     ||
-                    $extension == 'm4a'     ||
-                    $extension == 'wav'     ||
-                    $extension == 'flac'    ||
-                    $extension == 'ogg'     
-                )
-            {
+            elseif (in_array($extension, $inAudio)) {
                 $filetype = 'audio';
             }
             
-            elseif
-                (
-                    $extension == 'mp4'     ||
-                    $extension == 'm4v'     ||
-                    $extension == 'mkv'     ||
-                    $extension == 'flv'     ||
-                    $extension == 'ogv'     ||
-                    $extension == 'mov'     ||
-                    $extension == 'wmv'     ||
-                    $extension == 'webm'    ||
-                    $extension == 'avi'
-                )
-            {
+            elseif (in_array($extension, $inVideo)) {
                 $filetype = 'video';
             }
 
-            elseif
-                (
-                    $extension == 'jpeg'    ||
-                    $extension == 'jpg'     ||
-                    $extension == 'bmp'     ||
-                    $extension == 'png'     ||
-                    $extension == 'gif'     ||
-                    $extension == 'svg'     ||
-                    $extension == 'ico'     ||
-                    $extension == 'tiff'    ||
-                    $extension == 'webp'    
-                )
-            {
+            elseif (in_array($extension, $inImage)) {
                 $filetype = 'image';
             }
 
-            elseif
-                (
-                    $extension == 'pdf'     ||
-                    $extension == 'doc'     ||
-                    $extension == 'docx'    ||
-                    $extension == 'xls'     ||
-                    $extension == 'xlsx'    ||
-                    $extension == 'ppt'     ||
-                    $extension == 'pptx'    ||
-                    $extension == 'pps'     
-                )
-            {
+            elseif (in_array($extension, $inDocument)) {
                 $filetype = 'document';
             }
 
-            else
-            {
+            else {
                 $filetype = 'other';
             }
             

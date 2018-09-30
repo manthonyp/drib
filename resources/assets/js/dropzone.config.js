@@ -17,6 +17,7 @@ Dropzone.options.dropzone = {
     init: function () {
         this.on('addedfile', function() {
             $('#upload_modal .dz-message').hide();
+            $('#upload_modal .modal-header').hide();
             $('#file_preview').show();
         });
         this.on('processing', function(file) {

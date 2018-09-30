@@ -1,6 +1,6 @@
 <div class="modal fade" id="preview_modal" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="preview-toolbar position-relative d-flex justify-content-between px-3" role="toolbar">
+        <div class="preview-toolbar position-absolute d-flex justify-content-between w-100 px-3" role="toolbar">
             <div class="d-flex">
                 <button class="round-button light text-light d-flex justify-content-center" type="button" data-toggle="tooltip" data-placement="bottom" title="Close" data-dismiss="modal">
                     <i class="material-icons">arrow_back</i>
@@ -21,29 +21,28 @@
         </div>
         <div class="preview-container position-relative">
             <div class="preview-content position-relative d-flex justify-content-center align-items-center h-100 w-100">
-                <div class="preview-backdrop"></div>
-                <div class="preview-item position-relative">
+                <div class="preview-item position-relative d-flex justify-content-center align-items-center h-100 w-100">
 
                     {{-- if image --}}
-                    <img src="" alt="">
+                    <img class="position-relative" src="" alt="">
 
                     {{-- if audio --}}
-                    <audio controls>
+                    <audio class="position-relative" controls>
                         Your browser does not support HTML5 audio.
                     </audio>
 
                     {{-- if video --}}
-                    <video controls>
+                    <video class="position-relative" controls>
                         Your browser does not support HTML5 video.
                     </video>
 
                     {{-- <iframe style="display:none" src="" width="100%" height="600px"></iframe> --}}
 
                     {{-- if other --}}
-                    <div class="no-preview text-center p-2">
+                    <div class="no-preview position-relative text-center p-2">
                         <h3 class="text-light text-uppercase">Preview not available</h3>
                     </div>
-
+                    <div class="preview-backdrop"></div>
                 </div>
                 <div class="loader">
                     <div class="position-relative d-flex flex-column justify-content-center align-items-center w-100 h-100">
@@ -52,7 +51,7 @@
                 </div>
             </div>
             <div class="preview-info h-100 p-3">
-                <h3 class="border-bottom-dark">Details</h3>
+                <h3 class="border-bottom-dark mt-5">Details</h3>
                 <div class="audio-details">
                     <div class="d-flex flex-column">
                         <h5 class="mb-3 py-2 border-bottom border-secondary">General</h5>

@@ -52,8 +52,8 @@
                 <i class="material-icons">search</i>
                 <div class="rippleJS"></div>
             </button>
-            <span data-toggle="tooltip" data-placement="bottom" title="Upload">
-                <button id="upload-show" class="round-button dark text-dark d-flex justify-content-center mr-4" type="button" data-toggle="modal" data-target="#upload_modal">
+            <span data-toggle="tooltip" data-placement="bottom" title="Upload" class="upload-tooltip mr-4">
+                <button id="upload-show" class="round-button dark text-dark d-flex justify-content-center" type="button" data-toggle="modal" data-target="#upload_modal">
                     <i class="material-icons">publish</i>
                     <div class="rippleJS"></div>
                 </button>

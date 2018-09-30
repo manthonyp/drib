@@ -24,7 +24,7 @@
 
             @foreach ($posts as $post)
 
-                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" data-id="{{$post->id}}">
+                <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-3" data-id="{{$post->id}}">
                     <div class="card" tabindex='1'>
                         <a class="preview-thumb" href="javascript:void(0)" data-for="{{$post->category}}" data-id="{{$post->id}}" data-target="#preview_modal">
                             <div class="card-img-top position-relative d-flex flex-column align-items-center justify-content-center border-bottom">
@@ -49,15 +49,48 @@
                                     <h4 class="text-uppercase">{{$post->format}}</h4>
                                 
                                 @elseif ($post->category == 'document')
-                
-                                    <i class="fas fa-file-alt"></i>
-                                    <h4 class="text-uppercase">{{$post->format}}</h4>
+
+                                    @if ($post->format == 'pdf')
+
+                                       <i class="fas fa-file-pdf"></i>
+                                       <h4 class="text-uppercase">{{$post->format}}</h4>
+                                       
+                                    @elseif ($post->format == 'doc' || $post->format == 'docx')
+
+                                        <i class="fas fa-file-word"></i>
+                                        <h4 class="text-uppercase">{{$post->format}}</h4>
+
+                                    @elseif ($post->format == 'xls' || $post->format == 'xlsx')
+
+                                        <i class="fas fa-file-excel"></i>
+                                        <h4 class="text-uppercase">{{$post->format}}</h4>
+
+                                    @elseif ($post->format == 'ppt' || $post->format == 'pptx')
+
+                                        <i class="fas fa-file-powerpoint"></i>
+                                        <h4 class="text-uppercase">{{$post->format}}</h4>
+
+                                    @else
+
+                                        <i class="fas fa-file-alt"></i>
+                                        <h4 class="text-uppercase">{{$post->format}}</h4>
+
+                                    @endif
                                 
                                 @elseif ($post->category == 'other')
-                
-                                    <i class="fas fa-file"></i>
-                                    <h4 class="text-uppercase">{{$post->format}}</h4>
-                
+
+                                    @if (in_array($post->format, ['php','css','htm','html','js','json','asm','bas','fs','py','luac','cc','pl','nupkg','java','cpp','mm','fmb','swift','perl','d','bal','rpg','graphml','jav','pyc','asic','cxx','pas','x','l','rb','jl','f','lss','styl','jade','pyx','cbl','j','c++','cp','sass','less','scss']))
+
+                                        <i class="fas fa-file-code"></i>
+                                        <h4 class="text-uppercase">{{$post->format}}</h4>
+                                        
+                                    @else
+
+                                        <i class="fas fa-file"></i>
+                                        <h4 class="text-uppercase">{{$post->format}}</h4>
+                                        
+                                    @endif
+
                                 @endif
                 
                             </div>

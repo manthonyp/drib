@@ -32,7 +32,7 @@
 
                     @foreach ($recentActivity as $react)
 
-                        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" data-id="{{$react->id}}">
+                        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-3" data-id="{{$react->id}}">
                             <div class="card" tabindex='1'>
                                 <a class="preview-thumb" href="javascript:void(0)" data-for="{{$react->category}}" data-id="{{$react->id}}" data-target="#preview_modal">
                                     <div class="card-img-top position-relative d-flex flex-column align-items-center justify-content-center border-bottom">
@@ -57,15 +57,48 @@
                                             <h4 class="text-uppercase">{{$react->format}}</h4>
                                         
                                         @elseif ($react->category == 'document')
-                        
-                                            <i class="fas fa-file-alt"></i>
-                                            <h4 class="text-uppercase">{{$react->format}}</h4>
-                                        
+
+                                            @if ($react->format == 'pdf')
+       
+                                               <i class="fas fa-file-pdf"></i>
+                                               <h4 class="text-uppercase">{{$react->format}}</h4>
+                                               
+                                            @elseif ($react->format == 'doc' || $react->format == 'docx')
+        
+                                                <i class="fas fa-file-word"></i>
+                                                <h4 class="text-uppercase">{{$react->format}}</h4>
+        
+                                            @elseif ($react->format == 'xls' || $react->format == 'xlsx')
+        
+                                                <i class="fas fa-file-excel"></i>
+                                                <h4 class="text-uppercase">{{$react->format}}</h4>
+        
+                                            @elseif ($react->format == 'ppt' || $react->format == 'pptx')
+        
+                                                <i class="fas fa-file-powerpoint"></i>
+                                                <h4 class="text-uppercase">{{$react->format}}</h4>
+        
+                                            @else
+        
+                                                <i class="fas fa-file-alt"></i>
+                                                <h4 class="text-uppercase">{{$react->format}}</h4>
+        
+                                            @endif
+                                       
                                         @elseif ($react->category == 'other')
-                        
-                                            <i class="fas fa-file"></i>
-                                            <h4 class="text-uppercase">{{$react->format}}</h4>
-                        
+       
+                                            @if (in_array($react->format, ['php','css','htm','html','js','json','asm','bas','fs','py','luac','cc','pl','nupkg','java','cpp','mm','fmb','swift','perl','d','bal','rpg','graphml','jav','pyc','asic','cxx','pas','x','l','rb','jl','f','lss','styl','jade','pyx','cbl','j','c++','cp','sass','less','scss']))
+        
+                                                <i class="fas fa-file-code"></i>
+                                                <h4 class="text-uppercase">{{$react->format}}</h4>
+                                                
+                                            @else
+        
+                                                <i class="fas fa-file"></i>
+                                                <h4 class="text-uppercase">{{$react->format}}</h4>
+                                                
+                                            @endif
+       
                                         @endif
                         
                                     </div>
@@ -202,7 +235,7 @@
 
                     @foreach ($recentlyAdded as $readd)
 
-                        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" data-id="{{$readd->id}}">
+                        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-3" data-id="{{$readd->id}}">
                             <div class="card" tabindex='1'>
                                 <a class="preview-thumb" href="javascript:void(0)" data-for="{{$readd->category}}" data-id="{{$readd->id}}" data-target="#preview_modal">
                                     <div class="card-img-top position-relative d-flex flex-column align-items-center justify-content-center border-bottom">
@@ -227,15 +260,48 @@
                                             <h4 class="text-uppercase">{{$readd->format}}</h4>
                                         
                                         @elseif ($readd->category == 'document')
-                        
-                                            <i class="fas fa-file-alt"></i>
-                                            <h4 class="text-uppercase">{{$readd->format}}</h4>
+
+                                            @if ($readd->format == 'pdf')
+       
+                                               <i class="fas fa-file-pdf"></i>
+                                               <h4 class="text-uppercase">{{$readd->format}}</h4>
+                                                
+                                            @elseif ($readd->format == 'doc' || $readd->format == 'docx')
+        
+                                                <i class="fas fa-file-word"></i>
+                                                <h4 class="text-uppercase">{{$readd->format}}</h4>
+        
+                                            @elseif ($readd->format == 'xls' || $readd->format == 'xlsx')
+        
+                                                <i class="fas fa-file-excel"></i>
+                                                <h4 class="text-uppercase">{{$readd->format}}</h4>
+        
+                                            @elseif ($readd->format == 'ppt' || $readd->format == 'pptx')
+        
+                                                <i class="fas fa-file-powerpoint"></i>
+                                                <h4 class="text-uppercase">{{$readd->format}}</h4>
+        
+                                            @else
+        
+                                                <i class="fas fa-file-alt"></i>
+                                                <h4 class="text-uppercase">{{$readd->format}}</h4>
+        
+                                            @endif
                                         
                                         @elseif ($readd->category == 'other')
-                        
-                                            <i class="fas fa-file"></i>
-                                            <h4 class="text-uppercase">{{$readd->format}}</h4>
-                        
+        
+                                            @if (in_array($readd->format, ['php','css','htm','html','js','json','asm','bas','fs','py','luac','cc','pl','nupkg','java','cpp','mm','fmb','swift','perl','d','bal','rpg','graphml','jav','pyc','asic','cxx','pas','x','l','rb','jl','f','lss','styl','jade','pyx','cbl','j','c++','cp','sass','less','scss']))
+        
+                                                <i class="fas fa-file-code"></i>
+                                                <h4 class="text-uppercase">{{$readd->format}}</h4>
+                                                
+                                            @else
+        
+                                                <i class="fas fa-file"></i>
+                                                <h4 class="text-uppercase">{{$readd->format}}</h4>
+                                                
+                                            @endif
+        
                                         @endif
                         
                                     </div>

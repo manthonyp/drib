@@ -15,7 +15,7 @@
     <h4>Do you have a player for audio and video files?</h4>
     <p>DRIB uses HTML5 audio and video player for preview.</p>
     <h4>Can I hotlink directly to an image?</h4>
-    <p>Sadly, no.</p>
+    <p>Yes, you can hotlink images.</p>
     <h4>How can I contact you?</h4>
     <p>For any issues, questions, suggestions, or maybe just to show some love? Send us an <a href="mailto:mantonyposadas@gmail.com">email</a>.</p>
     

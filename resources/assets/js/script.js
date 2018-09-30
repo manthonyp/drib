@@ -441,12 +441,10 @@ $(function() {
         });
     });
 
-    // $('.preview-item iframe').attr('src', 'https://view.officeapps.live.com/op/view.aspx?src=' + window.location.origin + '/' + filesrc).css('display', 'block');
-
-    // stop audio when modal is hidden
+    // stop video, audio and hide elements when modal is hidden
     $('#preview_modal').on('hidden.bs.modal', function() {
         $('.preview-item audio, .preview-item video').attr('src', '');
-        $('.preview-item > *').css('display', 'none');
+        $('.preview-item > :not(.preview-backdrop)').css('display', 'none');
         $('.preview-info').removeClass('show');
         $('.preview-content').removeClass('showed-info');
     });
