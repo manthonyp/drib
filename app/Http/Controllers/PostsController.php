@@ -39,6 +39,11 @@ class PostsController extends Controller
             $fileBytesSize = $file->getClientSize();
             $filesize = sizeConvert($fileBytesSize);
 
+            // check if file will exceed the storage limit
+            if (storageSum() + $fileBytesSize > 5368709120) {
+                return response()->json(true);
+            }
+
             // set list of extension in an array
             $inArchive = ['zip','rar','tar','gz','tgz','7z'];
             $inAudio = ['mp3','m4a','wav','flac','ogg'];
@@ -72,7 +77,7 @@ class PostsController extends Controller
             }
             
             // rename file
-            $newFileName = uniqid().'_'.time().'.'.$extension;
+            $newFileName = uniqid().time().'.'.$extension;
 
             // public path
             $path = 'public/uploads/'.$user_id;
@@ -207,7 +212,7 @@ class PostsController extends Controller
             $resx = @$fileinfo['video']['resolution_x'];
             $resy = @$fileinfo['video']['resolution_y'];
             $playtime = @$fileinfo['playtime_string'];
-            $bitrate = round((@$fileinfo['video']['bitrate']/1000)).'kbps';
+            $bitrate = round((@$fileinfo['bitrate']/1000)).'kbps';
 
             // set values
             $post->video_framerate = $framerate;

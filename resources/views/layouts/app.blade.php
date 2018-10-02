@@ -60,6 +60,11 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/vendor98C9E7EB7A66F9AE58B223D3F129B.js') }}"></script>
+
+    @if (storagePercentage() < 100)
+        <script src="{{ asset('js/vendor98C9E7EB7A66F9AE58B223D3F129B.js') }}"></script>
+    @else 
+        <script src="{{ asset('js/vendor9A8FEF265B72CD8AB1159B445DED3.js') }}"></script>
+    @endif
 </body> 
 </html>

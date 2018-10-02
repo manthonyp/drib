@@ -425,7 +425,14 @@
 
     @else
 
-        <h1 class="text-center mt-5">It's lonely here, upload something.</h1>
+        <div class="text-center">
+            <h1 class="my-5">It's lonely here.</h1>
+            <img src="{{ asset('assets/dashboard-default.png') }}" width="170px" height="170px" alt="lonely">
+            <button type="button" data-toggle="modal" data-target="#upload_modal" class="d-flex justify-content-center align-items-center btn btn-dark btn-lg mx-auto">
+                <i class="material-icons mr-2">add</i> Upload
+                <div class="rippleJS"></div>
+            </button>
+        </div>
         
     @endif
 

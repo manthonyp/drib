@@ -11912,6 +11912,7 @@ footer {
 }
 
 .dark-theme #topnav #form-sd .search:focus,
+.dark-theme #sidebar .progress,
 .dark-theme #file-info .loader {
   background-color: #121212 !important;
 }

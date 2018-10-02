@@ -3572,14 +3572,24 @@ Dropzone.options.dropzone = {
             $(file.previewTemplate).find('.progress-text').text(Math.round(progress)+'%');
         });
         this.on('success', function(file) {
-            $(file.previewTemplate).find('.remove').hide();
-            $(file.previewTemplate).find('.success').show();
-            $(file.previewTemplate).find('.progress-text').hide();
+            if (file.xhr.response == 'true') {
+                $(file.previewTemplate).find('.remove').hide();
+                $(file.previewTemplate).find('.fail').show();
+                $(file.previewTemplate).find('.progress-text').hide();
+                $(file.previewTemplate).find('.progress').hide();
+                $(file.previewTemplate).find('.upload-error').text('File exceeds the storage limit.');
+            } else {
+                $(file.previewTemplate).find('.remove').hide();
+                $(file.previewTemplate).find('.success').show();
+                $(file.previewTemplate).find('.progress-text').hide();
+                $(file.previewTemplate).find('.progress').hide();
+            }
         });
         this.on('error', function(file) {
             $(file.previewTemplate).find('.remove').hide();
             $(file.previewTemplate).find('.fail').show();
             $(file.previewTemplate).find('.progress-text').hide();
+            $(file.previewTemplate).find('.progress').hide();
         });
         this.on('queuecomplete', function() {
             var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>Queue completed! Page reloading...</div>';
@@ -3758,6 +3768,7 @@ $(function() {
                     $('.preview-info .video-details .video-width').text(data.video_width);
                     $('.preview-info .video-details .video-height').text(data.video_height);
                     $('.preview-info .video-details .video-duration').text(data.video_duration);
+                    $('.preview-info .video-details .video-framerate').text(data.video_framerate);
                     $('.preview-info .video-details .video-bitrate').text(data.video_bitrate);
 
                     $('.preview-info .video-details .info-name').text(data.original_name);
@@ -3978,6 +3989,7 @@ $(function() {
                         $('#file-info .video-details .video-width').text(data.video_width);
                         $('#file-info .video-details .video-height').text(data.video_height);
                         $('#file-info .video-details .video-duration').text(data.video_duration);
+                        $('#file-info .video-details .video-framerate').text(data.video_framerate);
                         $('#file-info .video-details .video-bitrate').text(data.video_bitrate);
     
                         $('#file-info .video-details .info-name').text(data.original_name);

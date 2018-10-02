@@ -27,14 +27,24 @@ Dropzone.options.dropzone = {
             $(file.previewTemplate).find('.progress-text').text(Math.round(progress)+'%');
         });
         this.on('success', function(file) {
-            $(file.previewTemplate).find('.remove').hide();
-            $(file.previewTemplate).find('.success').show();
-            $(file.previewTemplate).find('.progress-text').hide();
+            if (file.xhr.response == 'true') {
+                $(file.previewTemplate).find('.remove').hide();
+                $(file.previewTemplate).find('.fail').show();
+                $(file.previewTemplate).find('.progress-text').hide();
+                $(file.previewTemplate).find('.progress').hide();
+                $(file.previewTemplate).find('.upload-error').text('File exceeds the storage limit.');
+            } else {
+                $(file.previewTemplate).find('.remove').hide();
+                $(file.previewTemplate).find('.success').show();
+                $(file.previewTemplate).find('.progress-text').hide();
+                $(file.previewTemplate).find('.progress').hide();
+            }
         });
         this.on('error', function(file) {
             $(file.previewTemplate).find('.remove').hide();
             $(file.previewTemplate).find('.fail').show();
             $(file.previewTemplate).find('.progress-text').hide();
+            $(file.previewTemplate).find('.progress').hide();
         });
         this.on('queuecomplete', function() {
             var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>Queue completed! Page reloading...</div>';

@@ -107,6 +107,10 @@
                 <div class="col-sm-8 video-duration"></div>
             </div>
             <div class="row mb-2">
+                <div class="col-sm-4 text-secondary">Framerate</div>
+                <div class="col-sm-8 video-framerate"></div>
+            </div>
+            <div class="row mb-2">
                 <div class="col-sm-4 text-secondary">Bitrate</div>
                 <div class="col-sm-8 video-bitrate"></div>
             </div>

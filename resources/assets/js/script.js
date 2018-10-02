@@ -164,6 +164,7 @@ $(function() {
                     $('.preview-info .video-details .video-width').text(data.video_width);
                     $('.preview-info .video-details .video-height').text(data.video_height);
                     $('.preview-info .video-details .video-duration').text(data.video_duration);
+                    $('.preview-info .video-details .video-framerate').text(data.video_framerate);
                     $('.preview-info .video-details .video-bitrate').text(data.video_bitrate);
 
                     $('.preview-info .video-details .info-name').text(data.original_name);
@@ -384,6 +385,7 @@ $(function() {
                         $('#file-info .video-details .video-width').text(data.video_width);
                         $('#file-info .video-details .video-height').text(data.video_height);
                         $('#file-info .video-details .video-duration').text(data.video_duration);
+                        $('#file-info .video-details .video-framerate').text(data.video_framerate);
                         $('#file-info .video-details .video-bitrate').text(data.video_bitrate);
     
                         $('#file-info .video-details .info-name').text(data.original_name);

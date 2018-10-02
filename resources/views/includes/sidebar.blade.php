@@ -72,14 +72,56 @@
                 <div class="text-secondary w-100 px-4">
                     <div class="d-flex flex-column mb-3">
                         <small>Files Uploaded</small>
-                        <div class="font-weight-bold">{{ totalFileUpload() }} / ∞</div>
+
+                        @if (totalFileUpload() == 0)
+
+                            <div class="font-weight-bold">NA</div>
+
+                        @elseif (totalFileUpload() == 1)
+
+                            <div class="font-weight-bold">{{ totalFileUpload() }} File</div>
+                            
+                        @else
+
+                            <div class="font-weight-bold">{{ totalFileUpload() }} Files</div>
+
+                        @endif
+
                     </div>
                     <div class="d-flex flex-column">
                         <small>Storage Usage</small>
-                        <div class="font-weight-bold">{{ totalStorageUse() }} / ∞</div>
+                        <div class="font-weight-bold">{{ totalStorageUse() }} / 5 GB</div>
+                    
+                        <div class="progress" style="height:3px">
+
+                            @if (storagePercentage() >= 85)
+
+                                <div class="progress-bar bg-danger" style="width:{{ storagePercentage() }}%"></div>
+                                
+                            @else
+                                
+                                <div class="progress-bar" style="width:{{ storagePercentage() }}%"></div>
+
+                            @endif
+
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+
+                            @if (storagePercentage() == 100)
+
+                                <small>Used all available storage</small>
+                                    
+                            @else
+                                
+                                <small>{{ storagePercentage() }}%</small>
+                                <small>{{ storageRemaining() }} Free</small>
+
+                            @endif
+
+                        </div>
                     </div>
                 </div>
-                
             </div>
         </section>
         <footer>
