@@ -3687,9 +3687,6 @@ $(function() {
             data: {
                 'view': view,
                 '_token': token
-            },
-            success: function(data) {
-                // do something
             }
         });
     });

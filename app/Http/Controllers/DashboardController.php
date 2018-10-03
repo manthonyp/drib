@@ -162,8 +162,6 @@ class DashboardController extends Controller
             // set session view to list
             Session::put('view', 'list');
         }
-        
-        return true;
     }
 
     public function admin()
