@@ -2,6 +2,8 @@
 
 // User
 Auth::routes();
+Route::delete('account/{id}', 'UsersController@destroy')->middleware('is_admin')->name('account.destroy');
+Route::post('account/changeType', 'UsersController@changeType')->middleware('is_admin')->name('change type');
 Route::get('account/settings', 'UsersController@edit')->name('account settings');
 Route::post('account/update', 'UsersController@update')->name('account update');
 Route::post('theme/set', 'UsersController@update')->name('theme');
@@ -15,6 +17,8 @@ Route::get('dashboard/shared', 'DashboardController@shared')->name('shared');
 Route::get('dashboard/trash', 'DashboardController@trash')->name('trash');
 Route::get('dashboard/search', 'DashboardController@search')->name('search');
 Route::get('dashboard/admin', 'DashboardController@admin')->middleware('is_admin')->name('admin');
+Route::get('dashboard/admin/manage-users', 'DashboardController@manageUsers')->middleware('is_admin')->name('manage users');
+Route::get('dashboard/admin/searchUsers', 'DashboardController@searchUsers')->middleware('is_admin')->name('search user');
 
 // Files
 Route::resource('posts', 'PostsController');

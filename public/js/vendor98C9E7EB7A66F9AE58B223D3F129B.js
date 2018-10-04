@@ -4265,4 +4265,145 @@ $(function() {
             }
         });
     });
+
+    // delays event handler's function
+    var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+
+    // search user by the inputted value
+    $('.search-user').keyup(function() {
+        var searchValue = $(this).val();
+        
+        delay(function(){
+
+            $.ajax({
+                url: '/dashboard/admin/searchUsers',
+                method: 'GET',
+                data: {
+                    'searchValue': searchValue
+                },
+                success: function(users) {
+                    $('.row.list').html('');
+
+                    $.each(users, function( index, user ) {
+                        $('.row.list').append(createHtmlForUserData(user));
+                    });
+                }
+            });
+
+        }, 500 );
+    });
+
+    // returns block of html for tha user's data that is to be append in the list
+    function createHtmlForUserData(user) {
+        if (user.avatar != null)
+            var avatar = `<div class="image-thumb rounded-circle" style="background:url('../../storage/`+ user.avatar +`') no-repeat scroll center center / cover;"></div>`;
+        else
+            var avatar = `<div class="image-thumb rounded-circle" style="background:url('../../assets/default-avatar.png') no-repeat scroll center center / cover;"></div>`;
+
+        var admin = ``;
+        if(user.type !== 'admin') {
+            admin = 
+            `<div class="card-dropdown dropup rounded-circle position-static">
+                <button class="dropdown-toggle rounded-circle px-2 py-1" id="cardDropdown" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-h"></i>
+                    <div class="rippleJS"></div>
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item change-type" href="javascript:void(0)">
+                        <div class="d-table-cell text-center pr-3"><i class="fas fa-exchange-alt"></i></div>
+                        <div class="d-table-cell">Change Type</div>
+                    </a>
+
+                    <a class="dropdown-item delete-user" href="javascript:void(0)">
+                        <div class="d-table-cell text-center pr-3"><i class="fas fa-trash"></i></div>
+                        <div class="d-table-cell">Delete</div>
+                    </a>
+                </div>
+            </div>`;
+        }
+        
+
+        blockOfHtml = 
+        `<div data-id="`+ user.id +`" class="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3 user-data">
+            <div class="card" tabindex='1'>
+                <div class="card-img-top position-relative d-flex flex-column align-items-center justify-content-center border-bottom">`
+                +
+                    avatar   
+                +
+                `</div>
+                <div class="card-body position-relative px-2 py-2">
+                    <h6 class="text-truncate mb-0">`+ user.name +`</h6>
+                    <h6 class="text-truncate text-secondary mt-1 mb-0 account-type">`+ user.type +`</h6>          
+                </div>`
+                +
+                    admin
+                +
+            `</div>
+        </div>`;
+
+        return blockOfHtml;
+    }
+
+    // change account type of user
+    $(document).on('click', '.change-type', function() {
+        var userId = $(this).closest('div.user-data').data('id');
+        var token =  $('meta[name=csrf-token]').attr('content');
+        
+        $.ajax({
+            url: '/account/changeType',
+            method: 'POST',
+            data: {
+                'id': userId,
+                '_token': token
+            },
+            success: function(data) {
+                var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>User '+data.name+"'s account type was changed to "+data.type+'.</div>';
+                
+                $('#status').append(alertbox);
+                $('div.user-data[data-id*="'+ data.id +'"] h6.account-type').text(data.type);
+                $('div.user-data[data-id*="'+ data.id +'"] div.card-dropdown').remove();
+
+                setTimeout(function() {
+                    $('.alert').slideUp(200, function(){
+                        $(this).remove(); 
+                    });
+                }, 5000);
+            }
+        });
+    });
+
+    // delete user
+    $(document).on('click', '.delete-user', function() {
+        var userId = $(this).closest('div.user-data').data('id');
+        var token =  $('meta[name=csrf-token]').attr('content');
+        
+        $.ajax({
+            url: '/account/'+userId,
+            method: 'POST',
+            data: {
+                '_method': 'DELETE',
+                'id': userId,
+                '_token': token
+            },
+            success: function(data) {
+                var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>User '+data.name+' deleted.</div>';
+                
+                $('#status').append(alertbox);
+                $('div.user-data[data-id*="'+ data.id +'"]').remove();
+                
+                setTimeout(function() {
+                    $('.alert').slideUp(200, function(){
+                        $(this).remove(); 
+                    });
+                }, 5000);
+            }
+        });
+    });
 });

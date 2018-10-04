@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Auth;
+use App\User;
+use File;
 
 class UsersController extends Controller
 {
@@ -135,5 +137,34 @@ class UsersController extends Controller
 
             return redirect()->back()->with('success', 'Account updated');
         }
+    }
+
+    public function changeType(Request $request)
+    {   
+        // reverse the account type of a user
+        $user = User::find($request->id);
+        $newType = $user->type === User::DEFAULT_TYPE ? User::ADMIN_TYPE : User::DEFAULT_TYPE;
+        $user->type = $newType;
+        
+        $user->save();
+
+        return response()->json($user);
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+
+        // delete user avatar in the avatar dir
+        Storage::delete('public/'.$user->avatar);
+
+        // delete directories made by the user
+        $dirPath = 'public/uploads/'.$user->id;
+        File::deleteDirectory($dirPath);
+        Storage::deleteDirectory($dirPath);
+
+        $user->delete();
+        
+        return $user;
     }
 }
