@@ -4289,10 +4289,15 @@ $(function() {
                 },
                 success: function(users) {
                     $('.row.list').html('');
+                    console.log();
 
-                    $.each(users, function( index, user ) {
-                        $('.row.list').append(createHtmlForUserData(user));
-                    });
+                    if(users.length > 0) {
+                        $.each(users, function( index, user ) {
+                            $('.row.list').append(createHtmlForUserData(user));
+                        });
+                    }else{
+                        $('.row.list').append('<div><h1 class="text-center mt-5">No user found.</h1></div>');
+                    }
                 }
             });
 
