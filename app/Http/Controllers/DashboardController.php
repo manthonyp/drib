@@ -222,4 +222,24 @@ class DashboardController extends Controller
                         ->with('recentUploads', $recentUploads)
                         ->with('recentDownloads', $recentDownloads);
     }
+
+    public function manageUsers()
+    {
+        // get latest regsitered users
+        $recentUsers = User::latest()
+                        ->take(10)
+                        ->get();
+
+        return view('dashboard.manageuser')->with('users', $recentUsers); 
+    }
+
+    public function searchUsers(Request $request)
+    {
+        $searchedUsers = User::latest()
+                        ->where('name','LIKE','%'.$request->searchValue.'%')
+                        ->take(10)
+                        ->get();
+
+        return $searchedUsers;
+    }
 }

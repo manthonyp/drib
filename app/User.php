@@ -39,4 +39,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Post');
     }
+
+    // This is a recommended way to declare event handlers
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($user) { // Called before the delete() method
+            //delete all posts made by the user
+            $user->posts()->delete();
+        });
+    }
 }
