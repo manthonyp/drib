@@ -82,11 +82,6 @@ class PostsController extends Controller
             // public path
             $path = 'public/uploads/'.$user_id;
 
-            // make user directory
-            if (!File::exists($path)) {
-                File::makeDirectory($path, 0777, true, true);
-            }
-
             // get mimetype
             $mime =$file->getMimeType();
 
