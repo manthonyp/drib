@@ -158,11 +158,9 @@ class UsersController extends Controller
         // delete user avatar in the avatar dir
         Storage::delete('public/'.$user->avatar);
 
-        // delete directories made by the user
+        // delete folder directory of user
         $dirPath = 'public/uploads/'.$user->id;
-        File::deleteDirectory($dirPath);
         Storage::deleteDirectory($dirPath);
-
         $user->delete();
         
         return $user;
