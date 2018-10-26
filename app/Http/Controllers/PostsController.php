@@ -18,6 +18,12 @@ class PostsController extends Controller
         $this->middleware('auth', ['except' => ['show', 'guestDownload']]);
     }
 
+    /**
+     * Storing file to storage and data to database
+     *
+     * @param Request $request
+     * @return void
+     */
     public function store(Request $request)
     {
         // handle file upload
@@ -109,6 +115,12 @@ class PostsController extends Controller
         }    
     }
 
+    /**
+     * Get file shareable link
+     *
+     * @param Request $request
+     * @return void
+     */
     public function shareLink(Request $request)
     {
         // get requested shared url link
@@ -117,6 +129,12 @@ class PostsController extends Controller
         return response()->json($post);
     }
 
+    /**
+     * Get file metadata
+     *
+     * @param Request $request
+     * @return void
+     */
     public function getFileInfo(Request $request)
     {
         // get requested shared url link
@@ -220,6 +238,13 @@ class PostsController extends Controller
         return response()->json($post);
     }
 
+    /**
+     * Show shared file
+     *
+     * @param int $id
+     * @param string $share_token
+     * @return void
+     */
     public function show($id, $share_token)
     {
         // get file requested
@@ -255,6 +280,12 @@ class PostsController extends Controller
         }
     }
 
+    /**
+     * Download for file owner
+     *
+     * @param int $id
+     * @return void
+     */
     public function userDownload($id)
     {
         // get file requested
@@ -276,6 +307,13 @@ class PostsController extends Controller
         }
     }
 
+    /**
+     * Download for guest
+     *
+     * @param int $id
+     * @param string $share_token
+     * @return void
+     */
     public function guestDownload($id, $share_token)
     {
         // get file requested
@@ -312,6 +350,12 @@ class PostsController extends Controller
         }
     }
 
+    /**
+     * Updating file statuses
+     *
+     * @param Request $request
+     * @return void
+     */
     public function update(Request $request)
     {
         // get file with id
@@ -357,6 +401,12 @@ class PostsController extends Controller
         }
     }
 
+    /**
+     * File deletion
+     *
+     * @param Request $request
+     * @return void
+     */
     public function destroy(Request $request)
     {
         // get file with id
@@ -371,6 +421,11 @@ class PostsController extends Controller
         return response()->json($post);
     }
 
+    /**
+     * Multiple file deletion
+     *
+     * @return void
+     */
     public function destroyMultiple()
     {
         // get file with id

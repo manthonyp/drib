@@ -16,6 +16,11 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Get signed in user for editing
+     *
+     * @return void
+     */
     public function edit()
     {
         // get the currently authenticated user
@@ -24,6 +29,13 @@ class UsersController extends Controller
         return view('pages.settings')->with('user', $user);
     }
 
+    /**
+     * Update user preferred theme
+     * Update user information
+     *
+     * @param Request $request
+     * @return void
+     */
     public function update(Request $request)
     {
         $user = Auth::user();
@@ -139,6 +151,12 @@ class UsersController extends Controller
         }
     }
 
+    /**
+     * Change user type
+     *
+     * @param Request $request
+     * @return void
+     */
     public function changeType(Request $request)
     {   
         // reverse the account type of a user
@@ -151,6 +169,12 @@ class UsersController extends Controller
         return response()->json($user);
     }
 
+    /**
+     * User deletion
+     *
+     * @param int $id
+     * @return void
+     */
     public function destroy($id)
     {
         $user = User::find($id);

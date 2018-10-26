@@ -16,6 +16,11 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Dashboard index
+     *
+     * @return void
+     */
     public function index()
     {
         $id = Auth::id();
@@ -38,6 +43,11 @@ class DashboardController extends Controller
                         ->with('recentlyAdded', $recentlyAdded);
     }
 
+    /**
+     * Dashboard all files
+     *
+     * @return void
+     */
     public function all()
     {
         $id = Auth::id();
@@ -50,6 +60,11 @@ class DashboardController extends Controller
         return view('dashboard.all')->with('posts', $posts);
     }
 
+    /**
+     * Dashboard recent files
+     *
+     * @return void
+     */
     public function recent()
     {
         $id = Auth::id();
@@ -98,6 +113,11 @@ class DashboardController extends Controller
                         ->with('postsMonth', $postsMonth);
     }
 
+    /**
+     * Dashboard shared files
+     *
+     * @return void
+     */
     public function shared()
     {
         $id = Auth::id();
@@ -111,6 +131,11 @@ class DashboardController extends Controller
         return view('dashboard.shared')->with('posts', $posts);
     }
 
+    /**
+     * Dashboard trash files
+     *
+     * @return void
+     */
     public function trash()
     {
         $id = Auth::id();
@@ -123,6 +148,12 @@ class DashboardController extends Controller
         return view('dashboard.trash')->with('posts', $posts);
     }
 
+    /**
+     * Dashboard search files
+     *
+     * @param Request $request
+     * @return void
+     */
     public function search(Request $request)
     {
         // get input query
@@ -150,6 +181,12 @@ class DashboardController extends Controller
                         ->with('count', $count);
     }
 
+    /**
+     * Dashboard files view layout
+     *
+     * @param Request $request
+     * @return void
+     */
     public function view(Request $request)
     {
         // get input query
@@ -164,6 +201,11 @@ class DashboardController extends Controller
         }
     }
 
+    /**
+     * Dashboard admin
+     *
+     * @return void
+     */
     public function admin()
     {
         // get users count
@@ -223,6 +265,11 @@ class DashboardController extends Controller
                         ->with('recentDownloads', $recentDownloads);
     }
 
+    /**
+     * Dashboard manage users
+     *
+     * @return void
+     */
     public function manageUsers()
     {
         // get latest regsitered users
@@ -233,6 +280,12 @@ class DashboardController extends Controller
         return view('dashboard.manageuser')->with('users', $recentUsers); 
     }
 
+    /**
+     * Dashboard search users
+     *
+     * @param Request $request
+     * @return void
+     */
     public function searchUsers(Request $request)
     {
         $searchedUsers = User::latest()
