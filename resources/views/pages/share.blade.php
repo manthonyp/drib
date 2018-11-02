@@ -84,7 +84,16 @@
                     </div>
                     <div class="d-flex border-bottom py-2">
                         <div class="desc">Owner</div>
-                        <div class="value">{{$post->owner}}</div>
+                        <div class="d-flex justify-content-center align-items-top value">
+
+                            @if (!empty($post->owner_avatar))
+
+                                <img class="rounded-circle mr-1" src="../../../storage/{{ $post->owner_avatar }}" width="25px" height="25px" alt="{{ $post->owner }}">
+
+                            @endif
+
+                            <span>{{ $post->owner }}</span>
+                        </div>
                     </div>
                     <div class="d-flex border-bottom py-2">
                         <div class="desc">Downloads</div>

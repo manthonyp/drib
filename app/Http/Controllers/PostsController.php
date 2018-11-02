@@ -264,6 +264,7 @@ class PostsController extends Controller
 
                     // set file owner
                     $post->owner = $user->name;
+                    $post->owner_avatar = $user->avatar;
                     
                     return view('pages.share')->with('post', $post);
 
