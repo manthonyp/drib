@@ -241,7 +241,7 @@ class PostsController extends Controller
     /**
      * Show shared file
      *
-     * @param int $id
+     * @param integer $id
      * @param string $share_token
      * @return void
      */
@@ -283,7 +283,7 @@ class PostsController extends Controller
     /**
      * Download for file owner
      *
-     * @param int $id
+     * @param integer $id
      * @return void
      */
     public function userDownload($id)
@@ -310,7 +310,7 @@ class PostsController extends Controller
     /**
      * Download for guest
      *
-     * @param int $id
+     * @param integer $id
      * @param string $share_token
      * @return void
      */
@@ -382,7 +382,6 @@ class PostsController extends Controller
             // set share token
             // set share url
             $share_token = str_random(32);
-            $post = Post::find($request->id);
             $post->shared = true;
             $post->share_token = $share_token;
             $post->share_url = '/file/shared/'.$post->id.'/'.$share_token;
@@ -393,7 +392,6 @@ class PostsController extends Controller
 
         elseif ($request->action == 'revoke') {
             // set shared status to false
-            $post = Post::find($request->id);
             $post->shared = false;
             $post->save();
 
