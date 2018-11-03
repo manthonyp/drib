@@ -122,8 +122,8 @@ $(function() {
             },                 
             success: function(data) {
                 if (data.category == 'audio') {
-                    $('#preview_modal .preview-item audio').css('display', 'block');
                     $('#preview_modal .preview-item audio').attr('src', '../' + data.storage_path);
+                    $('#preview_modal .preview-item .plyr--audio').css('display', 'block');
                     $('#preview_modal .preview-title').text(data.original_name);
 
                     $('.preview-info .audio-details .track-cover-art').attr('src', data.track_cover_art);
@@ -153,8 +153,8 @@ $(function() {
                 } 
                 
                 else if (data.category == 'video') {
-                    $('#preview_modal .preview-item video').css('display', 'block');
                     $('#preview_modal .preview-item video').attr('src', '../' + data.storage_path);
+                    $('#preview_modal .preview-item .plyr--video').css('display', 'block');
                     $('#preview_modal .preview-title').text(data.original_name);
 
                     $('.preview-info .video-details .video-dimension').text(data.video_width + 'x' + data.video_height);
@@ -247,8 +247,8 @@ $(function() {
                     $('#preview_modal').modal('show');
                     
                     if (data.category == 'audio') {
-                        $('#preview_modal .preview-item audio').css('display', 'block');
                         $('#preview_modal .preview-item audio').attr('src', '../' + data.storage_path);
+                        $('#preview_modal .preview-item .plyr--audio').css('display', 'block');
                         $('#preview_modal .preview-title').text(data.original_name);
     
                         $('.preview-info .audio-details .track-cover-art').attr('src', data.track_cover_art);
@@ -278,8 +278,8 @@ $(function() {
                     } 
                     
                     else if (data.category == 'video') {
-                        $('#preview_modal .preview-item video').css('display', 'block');
                         $('#preview_modal .preview-item video').attr('src', '../' + data.storage_path);
+                        $('#preview_modal .preview-item .plyr--video').css('display', 'block');
                         $('#preview_modal .preview-title').text(data.original_name);
     
                         $('.preview-info .video-details .video-dimension').text(data.video_width + 'x' + data.video_height);
@@ -343,8 +343,8 @@ $(function() {
 
                 else if (data.from == 'main') {
                     if (data.category == 'audio') {
-                        $('#file-info .preview-item audio').css('display', 'block');
-                        $('#file-info .preview-item audio').attr('src', '../' + data.storage_path);
+                        $('#preview_modal .preview-item audio').attr('src', '../' + data.storage_path);
+                        $('#preview_modal .preview-item .plyr--audio').css('display', 'block');
                         $('#file-info .preview-title').text(data.original_name);
     
                         $('#file-info .audio-details .track-cover-art').attr('src', data.track_cover_art);
@@ -374,8 +374,8 @@ $(function() {
                     } 
                     
                     else if (data.category == 'video') {
-                        $('#file-info .preview-item video').css('display', 'block');
-                        $('#file-info .preview-item video').attr('src', '../' + data.storage_path);
+                        $('#preview_modal .preview-item video').attr('src', '../' + data.storage_path);
+                        $('#preview_modal .preview-item .plyr--video').css('display', 'block');
                         $('#file-info .preview-title').text(data.original_name);
     
                         $('#file-info .video-details .video-dimension').text(data.video_width + 'x' + data.video_height);

@@ -27,16 +27,10 @@
                     <img class="position-relative" src="" alt="">
 
                     {{-- if audio --}}
-                    <audio class="position-relative" controls>
-                        Your browser does not support HTML5 audio.
-                    </audio>
+                    <audio class="player" class="position-relative" controls></audio>
 
                     {{-- if video --}}
-                    <video class="position-relative" controls>
-                        Your browser does not support HTML5 video.
-                    </video>
-
-                    {{-- <iframe style="display:none" src="" width="100%" height="600px"></iframe> --}}
+                    <video class="player" class="position-relative" playsinline controls></video>
 
                     {{-- if other --}}
                     <div class="no-preview position-relative text-center p-2">
