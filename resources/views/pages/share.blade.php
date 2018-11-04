@@ -186,8 +186,8 @@
             </ul>
         </div>
 
-        {!! Form::open(['action' => ['PostsController@guestDownload', $post->id, $post->share_token], 'method' => 'GET']) !!}
-            {{Form::submit('Download', ['id' => 'download_button', 'class' => 'btn btn-dark btn-lg w-100', 'data-id' => $post->id, 'data-share-token' => $post->share_token])}}
+        {!! Form::open(['action' => ['PostsController@guestDownload', $post->id, $post->share_token], 'method' => 'POST', 'id' => 'download_form']) !!}
+            <button id="download_button" type="button" class="btn btn-dark btn-lg w-100">Download</button>
         {!! Form::close() !!}
 
     </div>

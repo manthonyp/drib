@@ -335,8 +335,14 @@ class PostsController extends Controller
                     // increment download count
                     $post->downloads++;
                     $post->save();
+
+                    // set response headers
+                    $headers =[
+                        'Content-Description' => 'File Transfer',
+                        'Content-Type' => $post->mimetype,
+                    ];
                     
-                    return response()->download($post->storage_path, $post->original_name);
+                    return response()->download($post->storage_path, $post->original_name, $headers);
 
                 } else {
                     return view('errors.denied');

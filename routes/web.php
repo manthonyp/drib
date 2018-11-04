@@ -26,7 +26,7 @@ Route::get('file/shared/{id}/{share_token}', 'PostsController@show')->name('shar
 Route::get('file/shared/link', 'PostsController@shareLink');
 Route::get('file/info', 'PostsController@getFileInfo');
 Route::get('file/download/{id}/auth', 'PostsController@userDownload');
-Route::get('file/download/{id}/{share_token}', 'PostsController@guestDownload');
+Route::post('file/download/{id}/{share_token}', 'PostsController@guestDownload');
 Route::put('file/store', 'PostsController@store')->name('store');
 Route::post('file/share', 'PostsController@update')->name('file update');
 Route::post('file/trash', 'PostsController@update')->name('file trash');

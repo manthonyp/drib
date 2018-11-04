@@ -11822,28 +11822,10 @@ $(function() {
         $('#preview_modal').modal('hide');
     });
 
-    // increment file download count
+    // submit form and disable download button on click
     $('#download_button').click(function() {
-        var fileId = $(this).data('id');
-        var shareToken = $(this).data('share-token');
-        var token =  $('meta[name=csrf-token]').attr('content');
-
-        $.ajax({
-            url: '/file/download/' + fileId + '/' + shareToken,  
-            method: 'GET',
-            data: {
-                '_token': token
-            },
-            beforeSend: function() {
-                $('#download_button').attr('value', 'Fetching...');
-            },
-            complete: function() {
-                $('#download_button').attr('value', 'Downloading...').prop('disabled', 'true');
-            },
-            success: function(data) {
-                $('#download_button').attr('value', 'Downloading...').prop('disabled', 'true');
-            }
-        });
+        $('#download_form').submit();
+        $(this).text('Downloading...').prop('disabled', 'true');
     });
 
     // create shareable link
