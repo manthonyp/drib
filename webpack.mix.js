@@ -15,7 +15,7 @@ mix
     // scripts
     .js('resources/assets/js/app.js', 'public/js')
     // dashboard with available storage
-    .scripts([
+    .babel([
         'resources/assets/js/fontawesome.js',
         'resources/assets/js/ripple.js',
         'resources/assets/js/dropzone.js',
@@ -24,14 +24,14 @@ mix
         'resources/assets/js/script.js'
     ],  'public/js/vendor98C9E7EB7A66F9AE58B223D3F129B.js')
     // dashboard with full storage
-    .scripts([
+    .babel([
         'resources/assets/js/fontawesome.js',
         'resources/assets/js/ripple.js',
         'resources/assets/js/plyr.js',
         'resources/assets/js/script.js'
     ],  'public/js/vendor9A8FEF265B72CD8AB1159B445DED3.js')
     // download page wavesurfer audio preview
-    .scripts([
+    .babel([
         'resources/assets/js/wavesurfer.js'
     ],  'public/js/vendor9GHCJ726OI99ES8EE325981232V98.js')
     // source maps
