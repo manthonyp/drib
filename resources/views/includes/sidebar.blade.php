@@ -1,5 +1,5 @@
 <aside id="sidebar" class="border-right">
-    <div class="position-relative d-flex flex-column justify-content-between h-100 pb-3">
+    <div class="position-relative d-flex flex-column justify-content-between h-100">
         <section>
             <div class="brand d-flex justify-content-between align-items-center">
                 <a href="/">
@@ -131,9 +131,9 @@
                 </div>
             </div>
         </section>
-        <footer>
-            <div class="text-center py-2">
-                <div class="small">© 2018<a href="{{url('/')}}"> drib</a>. All rights reserved.</div>
+        <footer class="mt-5">
+            <div class="text-center pb-3">
+                <div class="small">© {{ date('Y') }}<a href="{{ url('/') }}"> drib</a>. All rights reserved.</div>
                 <div class="d-flex flex-wrap justify-content-center small">
                     <a class="mx-1" href="/">Home</a>
                     <a class="mx-1" href="/about">About</a>
