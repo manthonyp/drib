@@ -129,13 +129,13 @@ class UsersController extends Controller
                 // delete old post image
                 Storage::delete('public/'.$user->avatar);
 
-                // Get file extension
+                // get file extension
                 $extension = $request->file('avatar')->getClientOriginalExtension();
 
-                // Rename file
+                // rename file
                 $fileNameToStore = mt_rand(1000000, 9000000).'_'.time().'.'.$extension;
 
-                // Store file
+                // store file
                 $path = $request->file('avatar')->storeAs('public/avatar', $fileNameToStore);
 
                 // path to image

@@ -89,7 +89,7 @@ class PostsController extends Controller
             $path = 'public/uploads/'.$user_id;
 
             // get mimetype
-            $mime =$file->getMimeType();
+            $mime = $file->getMimeType();
 
             // set directory to store
             $storage = 'storage/uploads/'.$user_id.'/'.$newFileName;
@@ -365,44 +365,46 @@ class PostsController extends Controller
      */
     public function update(Request $request)
     {
-        // get file with id
         $post = Post::find($request->id);
 
-        if ($request->action == 'trash') {
-            // set trashed status to true
-            $post->trashed = true;
-            $post->save();
+        switch ($request->action) {
+            // set file status to trashed
+            case 'trash':
+                $post->trashed = true;
+                $post->save();
 
-            return response()->json($post);
-        }
+                return response()->json($post);
+                break;
+            
+            // untrash file status
+            case 'restore':
+                $post->trashed = false;
+                $post->save();
 
-        elseif ($request->action == 'restore') {
-            // set trashed status to false
-            $post->trashed = false;
-            $post->save();
-
-            return response()->json($post);
-        }
-
-        elseif ($request->action == 'grant') {
-            // set shared status to true
-            // set share token
-            // set share url
-            $share_token = str_random(32);
-            $post->shared = true;
-            $post->share_token = $share_token;
-            $post->share_url = '/file/shared/'.$post->id.'/'.$share_token;
-            $post->save();
+                return response()->json($post);
+                break;
+            
+            // make file available for sharing
+            case 'grant':
+                $share_token = str_random(32);
+                $post->shared = true;
+                $post->share_token = $share_token;
+                $post->share_url = '/file/shared/'.$post->id.'/'.$share_token;
+                $post->save();
     
-            return response()->json($post);
-        }
+                return response()->json($post);
+                break;
+            
+            // make file unavailable for sharing
+            case 'revoke':
+                $post->shared = false;
+                $post->save();
 
-        elseif ($request->action == 'revoke') {
-            // set shared status to false
-            $post->shared = false;
-            $post->save();
+                return response()->json($post);
+                break;
 
-            return response()->json($post);
+            default:
+                break;
         }
     }
 
@@ -438,7 +440,7 @@ class PostsController extends Controller
 
         foreach ($posts as $post) {
 
-            if ($post->trashed == true) {
+            if ($post->trashed) {
                 // delete file from storage
                 Storage::delete($post->public_path);
 
