@@ -86,7 +86,7 @@ class PostsController extends Controller
             $newFileName = uniqid().time().'.'.$extension;
 
             // public path
-            $path = 'public/uploads/'.$user_id;
+            $path = public_path().'/storage/uploads/'.$user_id;
 
             // get mimetype
             $mime = $file->getMimeType();
@@ -109,7 +109,7 @@ class PostsController extends Controller
             $post->save();
             
             // store file
-            $file->storeAs($path, $newFileName);
+            $file->move($path, $newFileName);
 
             return response()->json($file);
         }    
@@ -420,7 +420,7 @@ class PostsController extends Controller
         $post = Post::find($request->id);
 
         // delete file from storage
-        Storage::delete($post->public_path);
+        unlink($post->storage_path);
 
         // delete from database
         $post->delete();
@@ -436,13 +436,13 @@ class PostsController extends Controller
     public function destroyMultiple()
     {
         // get file with id
-        $posts = Post::where('user_id', auth()->user()->id)->get(['id', 'public_path', 'trashed']);
+        $posts = Post::where('user_id', auth()->user()->id)->get(['id', 'storage_path', 'trashed']);
 
         foreach ($posts as $post) {
 
             if ($post->trashed) {
                 // delete file from storage
-                Storage::delete($post->public_path);
+                unlink($post->storage_path);
 
                 // delete from database
                 $post->delete();

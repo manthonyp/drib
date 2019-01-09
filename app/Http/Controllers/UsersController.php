@@ -126,17 +126,16 @@ class UsersController extends Controller
                     'avatar' => 'image|required|mimetypes:image/gif,image/jpeg,image/png|max:3072'
                 ]);
 
-                // delete old post image
-                Storage::delete('public/'.$user->avatar);
+                // delete old post image if exists
+                if ($user->avatar) {
+                	unlink('storage/'.$user->avatar);
+                }
 
-                // get file extension
                 $extension = $request->file('avatar')->getClientOriginalExtension();
 
-                // rename file
                 $fileNameToStore = mt_rand(1000000, 9000000).'_'.time().'.'.$extension;
 
-                // store file
-                $path = $request->file('avatar')->storeAs('public/avatar', $fileNameToStore);
+                $path = $request->file('avatar')->move('storage/avatar', $fileNameToStore);
 
                 // path to image
                 $avatar = 'avatar/'.$fileNameToStore;
@@ -180,11 +179,19 @@ class UsersController extends Controller
         $user = User::find($id);
 
         // delete user avatar in the avatar dir
-        Storage::delete('public/'.$user->avatar);
-
+        if ($user->avatar) {
+            unlink('storage/'.$user->avatar);
+        }
+        
         // delete folder directory of user
-        $dirPath = 'public/uploads/'.$user->id;
-        Storage::deleteDirectory($dirPath);
+        $dirPath = 'storage/uploads/'.$user->id;
+        $files = glob($dirPath.'/*'); 
+
+        foreach ($files as $file) {
+            is_dir($file) ? removeDirectory($file) : unlink($file);
+        }
+
+        rmdir($dirPath);
         $user->delete();
         
         return $user;
