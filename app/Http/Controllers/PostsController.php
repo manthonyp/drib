@@ -416,13 +416,8 @@ class PostsController extends Controller
      */
     public function destroy(Request $request)
     {
-        // get file with id
         $post = Post::find($request->id);
-
-        // delete file from storage
         Storage::delete($post->public_path);
-
-        // delete from database
         $post->delete();
 
         return response()->json($post);
@@ -435,20 +430,15 @@ class PostsController extends Controller
      */
     public function destroyMultiple()
     {
-        // get file with id
         $posts = Post::where('user_id', auth()->user()->id)->get(['id', 'public_path', 'trashed']);
 
         foreach ($posts as $post) {
-
             if ($post->trashed) {
-                // delete file from storage
                 Storage::delete($post->public_path);
-
-                // delete from database
                 $post->delete();
             }
         }
        
-        return redirect()->back()->with('success', 'Trash has been cleaned');
+        return redirect()->back()->with('success', 'Trash has been cleaned.');
     }
 }

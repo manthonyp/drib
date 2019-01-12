@@ -9,13 +9,6 @@ $(function() {
         $(this).focus();
     });
 
-    // hide alert message after 5 seconds
-    setTimeout(function() {
-        $('.alert').slideUp(200, function(){
-            $(this).remove(); 
-        });
-    }, 5000);
-
     // submit download-form on click
     $('form.download-form').click(function() {
         $(this).submit();
@@ -545,18 +538,9 @@ $(function() {
                 '_token': token
             },                            
             success: function(data) {
-                var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>Shareable link removed.</div>';
-
                 $('a[data-unshare-id*='+ data.id + '], a[data-sharelink-id*='+ data.id + ']').hide();
                 $('a[data-share-id*='+ data.id + ']').css('display', 'block');
-
-                $('#status').append(alertbox);
-
-                setTimeout(function() {
-                    $('.alert').slideUp(200, function(){
-                        $(this).remove(); 
-                    });
-                }, 5000);
+                alert('Shareable link removed.');
             }
         });
     });
@@ -575,16 +559,8 @@ $(function() {
                 '_token': token
             },                            
             success: function(data) {
-                var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>File moved to trash.</div>';
-
-                $('#status').append(alertbox);
                 $('div[data-id*="'+ data.id +'"]').remove();
-
-                setTimeout(function() {
-                    $('.alert').slideUp(200, function(){
-                        $(this).remove(); 
-                    });
-                }, 5000);
+                alert('File moved to trash.');
             }
         });
     });
@@ -603,16 +579,8 @@ $(function() {
                 '_token': token
             },                            
             success: function(data) {
-                var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>File restored from trash.</div>';
-
-                $('#status').append(alertbox);
                 $('div[data-id*="'+ data.id +'"]').remove();
-
-                setTimeout(function() {
-                    $('.alert').slideUp(200, function(){
-                        $(this).remove(); 
-                    });
-                }, 5000);
+                alert('File restored from trash.');
             }
         });
     });
@@ -630,16 +598,8 @@ $(function() {
                 '_token': token
             },                            
             success: function(data) {
-                var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>File deleted permanently.</div>';
-
-                $('#status').append(alertbox);
                 $('div[data-id*="'+ data.id +'"]').remove();
-
-                setTimeout(function() {
-                    $('.alert').slideUp(200, function(){
-                        $(this).remove(); 
-                    });
-                }, 5000);
+                alert('File deleted permanently.');
             }
         });
     });
@@ -747,17 +707,9 @@ $(function() {
                 '_token': token
             },
             success: function(data) {
-                var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>User '+data.name+"'s account type was changed to "+data.type+'.</div>';
-                
-                $('#status').append(alertbox);
                 $('div.user-data[data-id*="'+ data.id +'"] h6.account-type').text(data.type);
                 $('div.user-data[data-id*="'+ data.id +'"] div.card-dropdown').remove();
-
-                setTimeout(function() {
-                    $('.alert').slideUp(200, function(){
-                        $(this).remove(); 
-                    });
-                }, 5000);
+                alert('User '+ data.name +"'s account type was changed to "+ data.type +'.');
             }
         });
     });
@@ -776,17 +728,30 @@ $(function() {
                 '_token': token
             },
             success: function(data) {
-                var alertbox = '<div class="alert alert-darken alert-dismissable"><a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a><i class="fas fa-check mr-2"></i>User '+data.name+' deleted.</div>';
-                
-                $('#status').append(alertbox);
                 $('div.user-data[data-id*="'+ data.id +'"]').remove();
-                
-                setTimeout(function() {
-                    $('.alert').slideUp(200, function(){
-                        $(this).remove(); 
-                    });
-                }, 5000);
+                alert('User '+ data.name +' deleted.');
             }
         });
     });
+
+    // show alert message
+    function alert(message) {
+        var alertbox = `<div class="alert alert-darken alert-dismissable">
+        <a href="javascript:void(0)" class="close ml-2" data-dismiss="alert" aria-label="close">&times;</a>
+        <i class="fas fa-check mr-2"></i>`+ message +`</div>`;
+
+        $('#status').append(alertbox);
+        hideAlert();
+    }
+
+    // hide alert message after 5 seconds
+    function hideAlert() {
+        setTimeout(function() {
+            $('.alert').slideUp(200, function(){
+                $(this).remove(); 
+            });
+        }, 5000);
+    }
+
+    hideAlert();
 });
